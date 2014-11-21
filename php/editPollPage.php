@@ -6,7 +6,7 @@
      <title>Many Polls</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <style>
@@ -28,38 +28,10 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('#previewPoll').hide();
-			$("#question").keypress(update);
-			$("#choice").keypress(update);
-			
-			//dynamically add choice field
-			var x = 1; //initial text box count
-			var maxChoices = 10;
-			var btnAddChoice = $(".btn_addChoice");
-			var choices = $(".form-group-choices");
-			$(btnAddChoice).click(function(e){
-				if(x < maxChoices){
-					e.preventDefault();
-					x++;
-					$(choices).append('<input type="text" class="form-control" id="choice" placeholder="Enter choice">');		
-				
-				}
-			});
-		});
-			
-		function update(){		
-		$('#previewPoll').slideDown('slow');
-		var question = $("#question").val();
-		var choice = $("#choice").val();
-		$('#previewQuestion').html(question);
-		$('#previewChoice').html(choice);
-		}
-		
-		
-		
-	</script>
+	
+	<script src="../js/addInput.js" language="Javascript" type="text/javascript"></script>
+	
+
 	
 </head>
 
@@ -103,13 +75,18 @@
 			<div class="previewPoll">
 				<div class="col-xs-6">
 					<h2>Preview</h2>
-					<form action="upload_file.php" method="post" enctype="multipart/form-data">
-						<input type="file" name="file">
-					</form>
-					<br>
-					<div id="previewQuestion"></div>
-					<br>
-					<div id="previewChoice"></div>
+					<div class="form-group">
+					  <label for="questionPreview">Question</label>
+					  <p id="questionPreview" ></p>
+					</div>
+					<div class="form-group">
+					  <label for="previewChoices">Choices:</label>					  
+					  <div id="previewChoices">
+						<input type="checkbox" id="choice1Preview" class="choicePreview"> 
+						<label for="choice1Preview"></label>
+						<!-- <p id="choice1Preview" class="choicePreview" ></p> -->
+					  </div>
+					</div>
 				</div>
 			</div>
 		
@@ -123,47 +100,46 @@
 					<!-- Poll Tab Menu -->
 					<div class="tab-content">
 						<!-- Poll Form -->
-						<div id="poll" class="tab-pane fade in active">
-							<div class="pollForm">
-								<div class="col-lg-12 text-left">
-								   <h2>Poll</h2>
-									<form role="form">
-										<div class="form-group">
-										  <label for="question">Question</label>
-										  <input type="text" class="form-control" id="question" placeholder="Enter question">
-										</div>
-										<div class="form-group-choices">
-										  <label for="choice">Choice:</label>
-										  <button class="btn_addChoice">Add choice</button>
-										  <input type="text" class="form-control" id="choice" placeholder="Enter choice">
-										</div>
-										<button type="submit" class="btn btn-default">Save</button>
-									</form>
+						<div id="pollForm" class="tab-pane fade in active col-lg-12 text-left">
+							<h2>Poll</h2>
+							<form role="form">
+								<div class="form-group">
+									<div id="questionInput">
+									  <label for="question">Question</label>
+									  <input type="text" class="form-control" name="question" placeholder="Enter question">
+									</div>
 								</div>
-							</div>
+								<div class="form-group">
+								  <label for="choiceInput">Choices:</label>					  
+								  <button class="btn_addChoice" onClick="addChoice('choiceInput'); return false;">Add choice</button>   
+								  <div id="choiceInput">
+									<div class="wrapperChoice">
+										<input id="choice1" type="text" class="form-control" name="choices[]" placeholder="Enter choice">
+										<a href="#" id="remove_choice1" class="remove_field" onClick="removeChoice('wrapperChoice'); return false;">x</a>
+									</div>
+								  </div>
+								</div>
+								<button type="submit" class="btn btn-default">Save</button>
+							</form>		
 						</div>
 						<!-- Settings form -->
-						<div id="settings" class="tab-pane fade">
-							<div class="settingsForm">
-								<div class="col-lg-12 text-left">
-								   <h2>Settings</h2>
-									<form role="form">
-										<div class="form-group">
-										  <h3>Layout</h3>
-										  <label>Allow multiple selections:
-											  <input type="checkbox" name="multSelect" id="multSelect"> 
-										  </label>
-										  <br>
-										  <label for="voteLabel">Vote button label:</label>
-										  <input type="text" class="form-control" id="voteLabel">
-										  <br>
-										  <label for="resultsLabel">See results label:</label>
-										  <input type="text" class="form-control" id="resultsLabel">
-										</div>
-									</form>
-								</div>
+					<div id="settingsForm" class="tab-pane fade col-lg-12 text-left">
+						<h2>Settings</h2>
+						<form role="form">
+							<div class="form-group">
+							  <h3>Layout</h3>
+							  <label>Allow multiple selections:
+								  <input type="checkbox" name="multSelect" id="multSelect"> 
+							  </label>
+							  <br>
+							  <label for="voteLabel">Vote button label:</label>
+							  <input type="text" class="form-control" id="voteLabel">
+							  <br>
+							  <label for="resultsLabel">See results label:</label>
+							  <input type="text" class="form-control" id="resultsLabel">
 							</div>
-						</div>
+						</form>
+					</div>
 					</div>
 				</div>
 			</div>
@@ -173,10 +149,10 @@
 
 
     <!-- jQuery Version 1.11.1 -->
-    <script src="js/jquery.js"></script>
+    <script src="../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
 </body>
 
