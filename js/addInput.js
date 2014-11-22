@@ -1,59 +1,56 @@
 
-//$(document).ready(function(){
 
-function removeChoice(divName) {
-			
-	alert(divName + " " + choiceCnt);
-	$("."+divName).on("click",".remove_field", function(e){ //user click on remove text
-		if(choiceCnt > 1){
+//dynamically add choice field
+var choiceCnt = 1; //initial text box count
+var maxChoices = 10;
+function addChoice(divName){
+	if(Object.keys(options).length == maxChoices){
+		alert("You have reached the number of choices limit ("+choiceCnt+")");
+	} else {
+		choiceCnt++;
+		//add to form
+		var newdiv = document.createElement('div');
+		newdiv.className = "wrapperChoice";
+		newdiv.innerHTML = "<input id='choice"+choiceCnt+"' type='text' class='form-control' name='choices[]' placeholder='Enter choice'> "+
+							"<a href='#' id='remove_choice"+choiceCnt+
+							"' class='remove_field'>x</a>";
+		document.getElementById(divName).appendChild(newdiv);
+		
+		//add to preview form
+		newdiv = document.createElement('div');
+		newdiv.className = "wrapperPrevChoice";
+		newdiv.innerHTML = "<input type='checkbox' id='choice"+choiceCnt+"Preview' class='choicePreview'> <label for='choice"+choiceCnt+"Preview'></label>";
+
+		document.getElementById('previewChoices').appendChild(newdiv);
+		options['choice'+choiceCnt+'Preview'] = newdiv;
+		console.log(options);
+	}
+};
+	
+var options = {};
+
+$(document).ready(function(){
+	options['choice1Preview'] = $('#choice1Preview');
+	
+	//remove choice
+	$("#choiceInput").on("click",".remove_field", function(e){ //user click on remove text
+		if(Object.keys(options).length > 1){
+			//remove choice from form
 			var divId = $(this).attr('id');
-			alert(divId);
-			e.preventDefault();
 			$(this).parent('.wrapperChoice').remove();
-			alert(document.body.innerHTML);
-			choiceCnt--;
+			
+			//remove from preview
+			var prevDivId = "#"+divId.substr(7)+'Preview'; //without 'remove_'
+			$(prevDivId).parent('.wrapperPrevChoice').remove();
+		
+			delete options[divId.substr(7)+'Preview']; 
+			console.log(options);
+			//choiceCnt--;
+			
 		} else {alert("You only have one choice field, you cannot remove it");}
 	});
-		
-	
-};
-
-
 	
 	
-	//dynamically add choice field
-	var choiceCnt = 1; //initial text box count
-	var maxChoices = 10;
-	function addChoice(divName){
-		if(choiceCnt == maxChoices){
-			alert("You have reached the number of choices limit ("+choiceCnt+")");
-		} else {
-			choiceCnt++;
-			//add to form
-			var newdiv = document.createElement('div');
-			newdiv.className = "wrapperChoice";
-			newdiv.innerHTML = "<input id='choice"+choiceCnt+"' type='text' class='form-control' name='choices[]' placeholder='Enter choice'> "+
-								'<a href="#" id="remove_choice"'+choiceCnt+
-								' class="remove_field" onClick="removeChoice(\'wrapperChoice\'); return false;">x</a>';
-			document.getElementById(divName).appendChild(newdiv);
-					
-			//add to preview form
-			newdiv = document.createElement('div');
-			newdiv.innerHTML = "<input type='checkbox' id='choice"+choiceCnt+"' class='choicePreview'> <label for='choice"+choiceCnt+"Preview'></label>";
-			//"<p id='choice"+choiceCnt+"Preview'></p>";
-			document.getElementById('previewChoices').appendChild(newdiv);
-			
-		}
-	};
-	
-	
-
-	
-//});
-	
-	
-$(document).ready(function(){
-
 	//update choices
 	$("#choiceInput").on("keyup", '.form-control', function(){
 		var divName = $(this).attr('id');

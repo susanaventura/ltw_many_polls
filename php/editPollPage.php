@@ -82,9 +82,10 @@
 					<div class="form-group">
 					  <label for="previewChoices">Choices:</label>					  
 					  <div id="previewChoices">
-						<input type="checkbox" id="choice1Preview" class="choicePreview"> 
-						<label for="choice1Preview"></label>
-						<!-- <p id="choice1Preview" class="choicePreview" ></p> -->
+						<div class="wrapperPrevChoice">
+							<input type="checkbox" id="choice1Preview" class="choicePreview"> 
+							<label for="choice1Preview"></label>
+						</div>
 					  </div>
 					</div>
 				</div>
@@ -115,7 +116,7 @@
 								  <div id="choiceInput">
 									<div class="wrapperChoice">
 										<input id="choice1" type="text" class="form-control" name="choices[]" placeholder="Enter choice">
-										<a href="#" id="remove_choice1" class="remove_field" onClick="removeChoice('wrapperChoice'); return false;">x</a>
+										<a href="#" id="remove_choice1" class="remove_field">x</a>
 									</div>
 								  </div>
 								</div>
