@@ -1,0 +1,1 @@
+insert into Users values(NULL, 'teste', '5-05-1994', 'susana', 'ventura', 'teste@mail.pt', '123');

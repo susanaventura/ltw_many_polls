@@ -1,8 +1,8 @@
 
-
 //dynamically add choice field
 var choiceCnt = 1; //initial text box count
 var maxChoices = 10;
+var choiceType = 'checkbox';
 function addChoice(divName){
 	if(Object.keys(options).length == maxChoices){
 		alert("You have reached the number of choices limit ("+choiceCnt+")");
@@ -19,17 +19,39 @@ function addChoice(divName){
 		//add to preview form
 		newdiv = document.createElement('div');
 		newdiv.className = "wrapperPrevChoice";
-		newdiv.innerHTML = "<input type='checkbox' id='choice"+choiceCnt+"Preview' class='choicePreview'> <label for='choice"+choiceCnt+"Preview'></label>";
+		newdiv.innerHTML = "<input type='"+choiceType+"' id='choice"+choiceCnt+"Preview' class='choicePreview' name='choicePrev'> <label class='checkboxLabelNormal' for='choice"+choiceCnt+"Preview'></label>";
 
 		document.getElementById('previewChoices').appendChild(newdiv);
 		options['choice'+choiceCnt+'Preview'] = newdiv;
 		console.log(options);
 	}
 };
+
+
+//var dialog = $('<div></div>').load("../php/loginPage.php");
+var dialog = $('<div></div>').load("../html/teste.html");
+function login(){
+	$(dialog).modal('show');
+		
+};
+
+
+
+$('.modal').on('shown.bs.modal', function() {
+    $(this).find('.modal-dialog-center').css({
+        'margin-top': function () {
+            return -($(this).outerHeight() / 2);
+        },
+        'margin-left': function () {
+            return -($(this).outerWidth() / 2);
+        }
+    });
+});
 	
 var options = {};
 
 $(document).ready(function(){
+		
 	options['choice1Preview'] = $('#choice1Preview');
 	
 	//remove choice
@@ -67,5 +89,30 @@ $(document).ready(function(){
 		$("#questionPreview").empty().append(output);
 	});
 	
-
+	//update buttons vote and see results
+	$("#voteLabel").keyup(function() {
+		var output = $(this).val();
+		$("#btn_previewVote").empty().append(output);
+	});
+	$("#resultsLabel").keyup(function() {
+		var output = $(this).val();
+		$("#btn_previewSeeResults").empty().append(output);
+	});
+	
+	//change between radio buttons e check boxes
+	$("#multSelect").click(function() {
+		if($("#multSelect").is(':checked'))
+			choiceType = "checkbox";
+		else choiceType = "radio";
+		
+		$(".choicePreview").each(function(i) {
+			var checkbox = $(this);//$("#choice1Preview");
+			var id = checkbox.attr('id');
+			checkbox.replaceWith('<input type="' + choiceType + '" id="'+id+'" class="choicePreview" name="choicePrev">');
+			});
+		});
+				
+		
+//		
 });
+

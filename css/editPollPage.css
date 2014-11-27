@@ -1,0 +1,47 @@
+
+div#previewArea {
+	border-radius: 10px;
+	border: 3px solid;
+	border-color: #e8e8e8;
+	
+	padding: 10px;
+}
+
+input[type=checkbox]#multSelect {
+	/* All browsers except webkit*/
+  transform: scale(1.5);
+
+  /* Webkit browsers*/
+  -webkit-transform: scale(1.5);
+  
+  margin: 5px;
+  margin-bottom: 20px;
+}
+
+div .checkboxLabelNormal  {
+	font-weight: normal;
+}
+
+div .wrapperChoice {
+margin-top: 10px;
+}
+div .wrapperChoice input[type=text] {
+	width: 90%;
+	float: left;	
+}
+
+div .remove_field {
+	font-size: 150%;
+	margin-left: 10px;
+	margin: 5px;
+}
+
+
+div .bootstrap-filestyle {
+	width: 80%;
+	float: left;
+}
+
+div #submit-btn, #loading-img{
+	float: right;	
+}
