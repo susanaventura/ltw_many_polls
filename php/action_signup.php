@@ -14,6 +14,8 @@ echo "hello <br>";
 	echo "postUser: $postUser <br>";
 	echo "postPsw: $postPsw <br>";  
 	
+	echo phpversion();
+	
 	if (!userExists($postUser) && !userExists($_POST['email'])){ // test if user exists
 		$user = signupUser($_POST['username'], $_POST['birth'], $_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password']);
 		$_SESSION['username'] = $user;         // store the username

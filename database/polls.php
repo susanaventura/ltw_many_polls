@@ -94,4 +94,65 @@ function getPollsByText($text) {
 		 
 	return $res;
 }
+
+
+class Poll {
+	public $id;
+	public $title;
+	public $owner;
+	public $image;
+	
+	public $questions;
+}
+
+function getPoll($pollid) {
+	global $db;
+	
+	$queryPoll = $db->prepare('SELECT title,image,owner FROM Poll WHERE id = ?');
+	$queryQuestions = $db->prepare('SELECT id,question FROM Question WHERE poll = ?');
+	$queryPossibleAnswer = $db->prepare('SELECT * FROM PossibleAnswer WHERE question = ?');
+	
+	$queryPoll->execute(array($pollid));
+	$pollRes = $queryPoll->fetch();
+	if ($pollRes == false) return false;
+	
+	$poll = new Poll();
+	$poll->id = $pollid;
+	$poll->title = $pollRes['title'];
+	$poll->owner = $pollRes['owner'];
+	$poll->image = $pollRes['image'];
+	
+	
+	$queryQuestions->execute(array($pollid));
+	$poll->questions = $queryQuestions->fetchAll();
+
+	
+	foreach($poll->questions as $i => $question) {
+		$queryPossibleAnswer->execute(array($question['id']));
+		$poll->questions[$i]['possibleanswers'] = $queryPossibleAnswer->fetchAll();
+	}
+	
+	var_dump($poll);
+	return $poll;
+}
+
+function giveAnswer($user, $question, $answer) {
+	global $db;
+	
+	
+	$deletePreviousAnswers = $db->prepare('
+		DELETE FROM UserAnswerPoll 
+		WHERE 
+			user = ? and 
+			answer in 
+				(SELECT id from PossibleAnswer WHERE question = ?)
+	'); // Delete all answers to the same question the user is trying to answer
+	
+	$insertAnswer = $db->prepare(' INSERT INTO UserAnswerPoll values(?,?)');
+	
+	// TODO
+
+}
+
+
 ?>
