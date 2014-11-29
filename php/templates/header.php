@@ -10,7 +10,6 @@
 	
 	<!-- Bootstrap Core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
-	<link href="../css/modalDialog.css" rel="stylesheet">
 
 	<!-- Custom CSS -->
 	<style>
@@ -21,6 +20,7 @@
 	</style>
 	<link rel="stylesheet" type="text/css" href="../css/editPollPage.css">
 	<link href="../css/round-about.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../css/pollsListPage.css">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
@@ -42,7 +42,7 @@
 
 	<script src="../js/addInput.js" language="Javascript" type="text/javascript"></script>
 	<script src="../js/uploadImages.js" language="Javascript" type="text/javascript"></script>
-
+	<!--<script src="../js/pollsList.js" language="Javascript" type="text/javascript"></script>-->
 	
 </head>
 
@@ -76,7 +76,8 @@
 					<?php if (isset($_SESSION['username'])) { ?>
 						<a href="action_logout.php">Logout <?=$_SESSION['username']?></a>
 					<?php } else { ?>
-						<a href="loginPage.php">Login</a>
+					 
+						<a href="" onClick="login(); return false;">Login</a>
 					<?php } ?>
 					</li>
 				</ul>

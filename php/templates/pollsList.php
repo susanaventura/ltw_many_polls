@@ -6,20 +6,24 @@
         <!-- Introduction Row -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">About Us
-                    <small>It's Nice to Meet You!</small>
-                </h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, explicabo dolores ipsam aliquam inventore corrupti eveniet quisquam quod totam laudantium repudiandae obcaecati ea consectetur debitis velit facere nisi expedita vel?</p>
+                <h1 class="page-header">Polls</h1>
+				<form id="searchForm" class="navbar-form navbar-right" role="search" method="get">
+					<div class="form-group">
+					  <input id="searchText" type="text" class="form-control" name="searchText" placeholder="Search">		  
+					</div>
+					<button type="submit" class="btn btn-default" aria-label="Search" action="pollsListPage.php">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					</button>
+				</form>
+
             </div>
 			
         </div>
 
         <!-- Polls -->
-        <div class="row">
+        <div id="pollsArea" class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">Our Team</h2>
+                <h2 class="page-header">All Polls</h2>
             </div>
-
-        
 
  

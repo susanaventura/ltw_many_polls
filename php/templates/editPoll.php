@@ -46,7 +46,7 @@
 								</div>
 								<div class="form-group">
 								  <label for="choiceInput">Choices:</label>					  
-								  <button class="btn_addChoice" onClick="addChoice('choiceInput'); return false;">Add choice</button>   
+								  <button class="btn btn-default btn_addChoice" onClick="addChoice('choiceInput'); return false;">Add choice</button>   
 								  <div id="choiceInput">
 									<div class="wrapperChoice">
 										<input id="choice1" type="text" class="form-control" name="choices[]" placeholder="Enter choice">
@@ -54,12 +54,30 @@
 									</div>
 								  </div>
 								</div>
-								<button type="submit" class="btn btn-default">Save</button>
+								<button type="submit" name="publish" class="btn btn-default">Save and publish</button>
+								<button type="submit" name="notpublish" class="btn btn-default">Save without publish</button>
 							</form>	
 						</div>
 							<!-- Settings form -->
 						<div id="settingsForm" class="tab-pane fade col-lg-12 text-left">
 							<h2>Settings</h2>
+							
+							<form role="form">
+								<div class="form-group">
+								  <h3>Privacy</h3>
+								  <button type="button" class="btn btn-default" data-toggle="tooltip" aria-label="Public">
+									<span class="glyphicon glyphicon-unlock" aria-hidden="true"></span>
+								  </button>
+								  <button type="button" class="btn btn-default" data-toggle="tooltip" aria-label="Private">
+									<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+								  </button>
+								  <button type="button" class="btn btn-default" data-toggle="tooltip" aria-label="Friends only">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								  </button>
+
+								</div>
+							</form>
+							
 							<form role="form">
 								<div class="form-group">
 								  <h3>Layout</h3>
@@ -93,6 +111,8 @@
 			</div>
 		</div>
     </div>
+	
+	<div id="modal_container"></div>
     <!-- /.container -->
 
 

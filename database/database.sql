@@ -22,7 +22,7 @@ create table Poll(
 	id integer PRIMARY KEY AUTOINCREMENT,
 	title varchar,
 	image varchar,
-	isPrivate integer NOT NULL CHECK(isPrivate = 0 or isPrivate = 1),
+	isPrivate integer NOT NULL CHECK(isPrivate = 0 or isPrivate = 1 or isPrivate = 2), --0 public, 1 private, 2 shared with friends
 	owner varchar REFERENCES User(username)
 );
 
@@ -57,7 +57,7 @@ insert into Poll values(NULL, 'Loret', 'http://www.jornalglobal.com/wp-content/u
 insert into Poll values(NULL, 'Ipsum', 'http://placehold.it/200&text=Many%20Polls', 0, 'teste');
 
 insert into Question values(NULL, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae?', 1);
-insert into Question values(NULL, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae?', 2);
+insert into Question values(NULL, 'ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae?', 2);
 
 insert into PossibleAnswer values(NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1);
 insert into PossibleAnswer values(NULL, 'Integer a lorem ac ex tristique consectetur eget at metus.', 1);

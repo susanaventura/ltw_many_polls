@@ -4,11 +4,11 @@
 	/* include das databases*/
 	include('../database/connection.php');
 	include('../database/polls.php');
-
-	echo "Hello";
-	$polls = getAllPublicPolls();
-	echo "Hello again";
-		
+	if (!isset($_GET['searchText']))
+		$polls = getAllPublicPolls();
+	else
+		$polls = getQuestionsPolls($_GET['searchText']);
+	
 	/* include templates */
 	include_once("templates/header.php");  
 	include_once("templates/pollsList.php");

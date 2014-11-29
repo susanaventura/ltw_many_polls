@@ -28,10 +28,19 @@ function addChoice(divName){
 };
 
 
-//var dialog = $('<div></div>').load("../php/loginPage.php");
-var dialog = $('<div></div>').load("../html/teste.html");
+var loginDialog = $('<div></div>').load("../php/templates/login.php");
 function login(){
-	$(dialog).modal('show');
+
+	$(loginDialog).find("#modalLogin").addClass("modal fade");
+	$(loginDialog).find("#modalLogin").attr("tabindex", "-1");
+	$(loginDialog).find("#modalLogin").attr("role", "dialog");
+	$(loginDialog).find("#modalLogin").attr("aria-labelledby", "modalLoginLabel");
+	$(loginDialog).find("#modalLogin").attr("aria-hidden", "true");
+	
+	$('#modal_container').empty();
+	$('#modal_container').append($(loginDialog));
+	
+	$(loginDialog).find("#modalLogin").modal('show');
 		
 };
 
