@@ -38,8 +38,31 @@
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
-		
 
+	<!-- esapi4js -->
+	<script type="text/javascript" language="JavaScript" src="../js/esapi4js/esapi.js"></script>
+	<script type="text/javascript" language="JavaScript" src="../js/esapi4js/lib/log4js.js"></script>
+	<script type="text/javascript" language="JavaScript" src="../js/esapi4js/resources/i18n/ESAPI_Standard_en_US.properties.js"></script>
+	<script type="text/javascript" language="JavaScript" src="../js/esapi4js/resources/Base.esapi.properties.js"></script>
+	
+	<script type="text/javascript" language="JavaScript">
+		// Set any custom configuration options here or in an external js file that gets sourced in above.
+		Base.esapi.properties.logging['ApplicationLogger'] = {
+        Level: org.owasp.esapi.Logger.ALL,
+        Appenders: [ new Log4js.ConsoleAppender() ],
+        LogUrl: true,
+        LogApplicationName: true,
+        EncodingRequired: true
+		};
+
+		Base.esapi.properties.application.Name = "ManyPolls";
+
+		// Initialize the api
+		org.owasp.esapi.ESAPI.initialize();
+	</script>
+	
+	
+	
 	<script src="../js/addInput.js" language="Javascript" type="text/javascript"></script>
 	<script src="../js/uploadImages.js" language="Javascript" type="text/javascript"></script>
 	<!--<script src="../js/pollsList.js" language="Javascript" type="text/javascript"></script>-->

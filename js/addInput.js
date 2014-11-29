@@ -87,7 +87,7 @@ $(document).ready(function(){
 		var divName = $(this).attr('id');
 		var prevDivName = divName+"Preview";
 		var output = $(this).val();
-		$("label[for='"+prevDivName+"']").empty().append(output);
+		$("label[for='"+prevDivName+"']").empty().append( $ESAPI.encoder().encodeForHTML(output) );
 	});
 	
 	//update question
@@ -95,7 +95,7 @@ $(document).ready(function(){
 		var divName = $(this).attr('id');
 		var prevDivName = divName+"Preview";
 		var output = $(this).val();
-		$("#questionPreview").empty().append(output);
+		$("#questionPreview").empty().append( $ESAPI.encoder().encodeForHTML(output) );
 	});
 	
 	//update buttons vote and see results
