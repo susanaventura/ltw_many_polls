@@ -112,27 +112,92 @@ function getPoll($pollid) {
 		$poll->questions[$i]['possibleanswers'] = $queryPossibleAnswer->fetchAll();
 	}
 	
-	var_dump($poll);
 	return $poll;
 }
 
-function giveAnswer($user, $question, $answer) {
+/*
+	Verifica se um user já respondeu a uma poll e dá as respostas dele
+	Devolve false se ainda não respondeu
+	Devolve um array com as respostas dele caso contrario.
+*/
+function userAnsweredPoll($user, $poll) {
 	global $db;
 	
+	if ($user == 'anonymous') {
+		if (!isset($_SESSION['pollsAnswered'])) return false;
+		if (!isset($_SESSION['pollsAnswered'][$poll])) return false;
+		
+		return $_SESSION['pollsAnswered'][$poll];
+	}
 	
-	$deletePreviousAnswers = $db->prepare('
-		DELETE FROM UserAnswerPoll 
-		WHERE 
-			user = ? and 
-			answer in 
-				(SELECT id from PossibleAnswer WHERE question = ?)
-	'); // Delete all answers to the same question the user is trying to answer
+	$queryGetAnswersByUserAndPoll = $db->prepare(' 
+		SELECT UserAnswerPoll.answer as id
+		FROM UserAnswerPoll,PossibleAnswer,Question 
+		WHERE
+			UserAnswerPoll.answer = PossibleAnswer.id AND
+			PossibleAnswer.question = Question.id AND
+			UserAnswerPoll.user = ? AND
+			Question.poll = ?;
+	');
+			
+	$queryGetAnswersByUserAndPoll->execute(array($user, $poll));
+	$res = $queryGetAnswersByUserAndPoll->fetchAll();
+	
+	if (sizeof($res)>0) {
+		$answers = array();
+		foreach($res as $i=>$answer) {
+			$answers[$i] = $answer['id'];
+		}
+		return $answers;
+	} else
+		return false;
+}
+
+
+/*
+	Guarda na base de dados a resposta de um user a uma poll
+	Não faz quaisquer verificações!	
+*/
+function giveAnswer($user, $poll, $answers) {
+	global $db;
 	
 	$insertAnswer = $db->prepare(' INSERT INTO UserAnswerPoll values(?,?)');
 	
-	// TODO
+	// annonimous
+	if ($user == 'anonymous') {
+		if (!isset($_SESSION['pollsAnswered']))	$_SESSION['pollsAnswered'] = array();
+		if (!isset($_SESSION['pollsAnswered'][$poll])) {
+			$_SESSION['pollsAnswered'][$poll] = $answers;				
+		}
+	} 	
+	
+	foreach($answers as $answer) {
+		//$insertAnswer->execute(array($user,$answer));
+		echo "userAnswerPoll($user, $answer) <br>";
+	}
 
 }
 
+/*
+	Devolve os resultados de uma certa pergunta no formato:
+	$results[$possibleAnswerId] -> numero de respostas com aquela pergunta
+*/
+function getResults($question) {
+	global $db;
+	
+	$queryQuestionResults = $db->prepare(' 
+		SELECT 
+			PossibleAnswer.id,count(UserAnswerPoll.answer) 
+		FROM 
+			PossibleAnswer left join UserAnswerPoll 
+			ON UserAnswerPoll.answer = PossibleAnswer.id
+		WHERE
+			PossibleAnswer.question = ?
+		GROUP BY
+			PossibleAnswer.id;
+	');
+	
+	// TODO
+}
 
 ?>
