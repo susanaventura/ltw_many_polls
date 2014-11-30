@@ -3,6 +3,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Many Polls</title>
 	
 	<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
@@ -19,9 +20,10 @@
 	}
 	</style>
 	<link rel="stylesheet" type="text/css" href="../css/editPollPage.css">
+	<link rel="stylesheet" type="text/css" href="../css/pollsList.css">
 	<link href="../css/round-about.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="../css/pollsListPage.css">
-
+	<link href="../css/portfolio-item.css" rel="stylesheet">
+ 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
@@ -65,7 +67,7 @@
 	
 	<script src="../js/addInput.js" language="Javascript" type="text/javascript"></script>
 	<script src="../js/uploadImages.js" language="Javascript" type="text/javascript"></script>
-	<!--<script src="../js/pollsList.js" language="Javascript" type="text/javascript"></script>-->
+	<script src="../js/listPolls.js" language="Javascript" type="text/javascript"></script>
 	
 </head>
 
@@ -109,3 +111,5 @@
 		</div>
 		<!-- /.container -->
 	</nav>
+	
+	<div id="modal_container"></div>

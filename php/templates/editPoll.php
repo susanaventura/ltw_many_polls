@@ -112,15 +112,8 @@
 		</div>
     </div>
 	
-	<div id="modal_container"></div>
+	
     <!-- /.container -->
-
-
-    <!-- jQuery Version 1.11.1 -->
-   <!-- <script src="../js/jquery.js"></script>-->
-
-    <!-- Bootstrap Core JavaScript -->
-    <!---->
 
 </body>
 

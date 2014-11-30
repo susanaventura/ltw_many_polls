@@ -23,7 +23,11 @@
         <!-- Polls -->
         <div id="pollsArea" class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">All Polls</h2>
+				<? if (!isset($_GET['searchText'])) {?>
+					<h2 class="page-header">All Polls</h2>
+				<? }else{?>
+					<h2 class="page-header">Search result</h2>
+				<?}?>
             </div>
 
  

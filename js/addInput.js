@@ -44,6 +44,21 @@ function login(){
 		
 };
 
+var signupDialog = $('<div></div>').load("../php/templates/signup.php");
+function signup(){
+
+	$(signupDialog).find("#modalSignUp").addClass("modal fade");
+	$(signupDialog).find("#modalSignUp").attr("tabindex", "-1");
+	$(signupDialog).find("#modalSignUp").attr("role", "dialog");
+	$(signupDialog).find("#modalSignUp").attr("aria-labelledby", "modalSLabel");
+	$(signupDialog).find("#modalSignUp").attr("aria-hidden", "true");
+	
+	$('#modal_container').empty();
+	$('#modal_container').append($(signupDialog));
+	
+	$(signupDialog).find("#modalSignUp").modal('show');
+		
+};
 
 
 $('.modal').on('shown.bs.modal', function() {

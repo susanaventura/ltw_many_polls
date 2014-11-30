@@ -50,13 +50,13 @@ function getUserPolls($user) {
 	return $res;
 }
 
-function getQuestionsPolls($text) {
+function getPollsByKeys($text) {
 	global $db;
 	var_dump($db);
 	$string = "%".$text."%";
 	try {
 		
-		 $stmt = $db->prepare('SELECT id, title, owner, image FROM Poll WHERE id in (select poll FROM Question WHERE question LIKE :text)');
+		 $stmt = $db->prepare('SELECT DISTINCT id, title, owner, image FROM Poll WHERE id in (select poll FROM Question WHERE question LIKE :text) OR title LIKE :text');
 
 
 		 $stmt->bindParam(':text', $string);
@@ -73,25 +73,5 @@ function getQuestionsPolls($text) {
 }
 
 
-function getPollsByText($text) {
-	global $db;
-	$string = "%".$text."%";
-	try {
-		var_dump($db);
-		 $stmt = $db->prepare('SELECT id, title, owner, image FROM Poll WHERE title like ?');
 
-		 //var_dump($stmt);
-		 $stmt->execute(array($string));   
-		 
-		 $res = $stmt->fetchAll();
-		 
-		 //var_dump($res);
-		 
-		 
-	} catch (PDOException $e) {
-			echo $e->getMessage();
-	}
-		 
-	return $res;
-}
 ?>

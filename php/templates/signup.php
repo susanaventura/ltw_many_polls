@@ -1,7 +1,7 @@
 <div id="modalSignUp">
 	<div class="modal-dialog">
 		<div class="modal-content">  
-				<div id="signupbox"">
+				<div id="signupbox">
 					<div class="panel panel-info">
 						<div class="panel-heading modal-header">
 							<div class="panel-title">Sign Up</div>
