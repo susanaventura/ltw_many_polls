@@ -1,5 +1,6 @@
 <?php
-	
+
+	require('../php/lib/password.php');
 
   function userExists($user) {
 	global $db;
@@ -23,10 +24,10 @@
 		 
 		 $res = $stmt->fetch();
 	} catch (PDOException $e) {
-			echo $e->getMessage();
+		echo $e->getMessage();
 	}
 		 
-	return $res['password'] === $password;
+	return ($res !== false && password_verify($password, $res['password']));
   }
   
   function signupUser($username, $birthdate, $firstname, $lastname, $email, $password) {
@@ -38,8 +39,11 @@
 		echo "\nPDO::errorInfo():\n";
 		print_r($db->errorInfo());
 	}
-	  
-	$user = $stmt->execute(array($username, $birthdate, $firstname, $lastname, $email, $password));
+	
+	$options = ['cost' => 12];
+	$passwordhash = password_hash($password, PASSWORD_DEFAULT, $options);
+	
+	$user = $stmt->execute(array($username, $birthdate, $firstname, $lastname, $email, $passwordhash));
 	
 	return $user['username'];
 	  
