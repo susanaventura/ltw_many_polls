@@ -116,8 +116,8 @@ function getPoll($pollid) {
 }
 
 /*
-	Verifica se um user j√° respondeu a uma poll e d√° as respostas dele
-	Devolve false se ainda n√£o respondeu
+	Verifica se um user j· respondeu a uma poll e d· as respostas dele
+	Devolve false se ainda n„o respondeu
 	Devolve um array com as respostas dele caso contrario.
 */
 function userAnsweredPoll($user, $poll) {
@@ -157,7 +157,7 @@ function userAnsweredPoll($user, $poll) {
 /*
 	Guarda na base de dados as respostas de um user a uma poll
 	Caso seja anonimo guarda se respondeu, e as suas respostas, na session
-	N√£o faz quaisquer verifica√ß√µes!	
+	N„o faz quaisquer verificaÁıes!	
 */
 function giveAnswer($user, $poll, $answers) {
 	global $db;
@@ -199,7 +199,7 @@ function giveAnswer($user, $poll, $answers) {
 	
 	Exemplo:
 	$results = getResults($idPergunta);
-	echo "Respostas √† pergunta $results['questionText']: <br>";
+	echo "Respostas ‡ pergunta $results['questionText']: <br>";
 	foreach($results['answers'] as $answer) {
 		echo "Resposta: $answer['text'] => $answer['n'] respostas. <br>";
 	}
