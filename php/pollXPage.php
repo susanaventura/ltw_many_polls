@@ -8,6 +8,20 @@
 		$poll = getPoll($_GET['id']);
 	else die();
 	
+	if(!isset($_SESSION['username'])) $user = 'anonymous'; else $user = $_SESSION['username'];
+	
+	$userAnsweredPoll = userAnsweredPoll($user, $_GET['id']);
+	
+	
+	//if($userAnsweredPoll) json_encode($userAnsweredPoll);
+	
+	/*$advert = array(
+        "ajax" => "Hello world!",
+     );*/
+   // echo json_encode($advert);
+	
+	 
+	 
 	/* include templates */
 	include_once("templates/header.php");  
 	include_once("templates/pollX.php");

@@ -30,6 +30,7 @@ create table Question(
 	id integer PRIMARY KEY AUTOINCREMENT,
 	question varchar NOT NULL,
 	poll integer REFERENCES Poll(id),
+	multipleAnswers integer CHECK(multipleAnswers = 0 OR multipleAnswers = 1),
 	UNIQUE(poll, question)
 );
 
@@ -56,15 +57,15 @@ insert into User values(NULL, 'teste', '5-05-1994', 'susana', 'ventura', 'teste@
 insert into Poll values(NULL, 'Loret', 'http://www.jornalglobal.com/wp-content/uploads/2014/10/chocolate.jpg', 0, 'teste');
 insert into Poll values(NULL, 'Ipsum', 'http://placehold.it/200&text=Many%20Polls', 0, 'teste');
 
-insert into Question values(NULL, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae?', 1);
-insert into Question values(NULL, 'ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae?', 2);
+insert into Question values(NULL, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae?', 1, 0);
+insert into Question values(NULL, 'ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae?', 2, 1);
 
 insert into PossibleAnswer values(NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1);
 insert into PossibleAnswer values(NULL, 'Integer a lorem ac ex tristique consectetur eget at metus.', 1);
 insert into PossibleAnswer values(NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 2);
 insert into PossibleAnswer values(NULL, 'Integer a lorem ac ex tristique consectetur eget at metus.', 2);
 
-insert into UserAnswerPoll values('teste', 1);
+insert into UserAnswerPoll values('testee', 1);
 
 insert into UsersPoll values('teste', 1);
 insert into UsersPoll values('teste', 2);

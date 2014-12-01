@@ -23,11 +23,13 @@
 	<link rel="stylesheet" type="text/css" href="../css/pollsList.css">
 	<link href="../css/round-about.css" rel="stylesheet">
 	<link href="../css/portfolio-item.css" rel="stylesheet">
+	<link href="../css/pollX.css" rel="stylesheet">
  
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 	<script src="../js/bootstrap-filestyle.min.js"></script>
 
@@ -68,6 +70,8 @@
 	<script src="../js/addInput.js" language="Javascript" type="text/javascript"></script>
 	<script src="../js/uploadImages.js" language="Javascript" type="text/javascript"></script>
 	<script src="../js/listPolls.js" language="Javascript" type="text/javascript"></script>
+	<script src="../js/googleCharts.js" language="Javascript" type="text/javascript"></script>
+	<script src="../js/pollX.js" language="Javascript" type="text/javascript"></script>
 	
 </head>
 
