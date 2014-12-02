@@ -42,9 +42,11 @@
 						</div>
 						<?}?>	
 					</div>
+					<?if($userAnsweredPoll == false){?>
 					<button type="submit" name="vote" class="btn btn-default" >Vote</button>
-					<?if($userAnsweredPoll)?>
+					<?} if($userAnsweredPoll){?>
 					<button type="btn" name="vote" class="btn btn-default" onClick="showResults(); return false;">See results</button>
+					<?}?>
 					<hr>
 					<button name="share" class="btn btn-default">Share</button>
 				</form>

@@ -25,7 +25,9 @@
             <div class="col-lg-12">
 				<? if (!isset($_GET['searchText'])) {?>
 					<h2 class="page-header">All Polls</h2>
-				<? }else{?>
+				<? } else if ($_GET['searchText'] == "MyPolls"){?>
+					<h2 class="page-header">My Polls</h2>
+				<?} else{?>
 					<h2 class="page-header">Search result</h2>
 				<?}?>
             </div>

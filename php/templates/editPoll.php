@@ -6,6 +6,7 @@
 				<div class="col-xs-6">
 					<h2>Preview</h2>
 					<div id="previewArea">
+						<img id="img-preview" src="http://placehold.it/200&text=ManyPolls" alt="an image">
 						<div class="form-group">
 						  <label for="questionPreview">Question</label>
 						  <p id="questionPreview" ></p>
@@ -37,7 +38,7 @@
 						<!-- Poll Form -->
 						<div id="pollForm" class="tab-pane fade in active col-lg-12 text-left">
 							<h2>Poll</h2>
-							<form role="form">
+							<form role="form" name="EditPollForm" onsubmit="return validatePollSubmit(<?=isset($_SESSION['username'])?>);">
 								<div class="form-group">
 									<div id="questionInput">
 									  <label for="question">Question</label>
@@ -49,14 +50,18 @@
 								  <button class="btn btn-default btn_addChoice" onClick="addChoice('choiceInput'); return false;">Add choice</button>   
 								  <div id="choiceInput">
 									<div class="wrapperChoice">
-										<input id="choice1" type="text" class="form-control" name="choices[]" placeholder="Enter choice">
+										<input id="choice1" type="text" class="form-control" name="choices[0]" placeholder="Enter choice">
 										<a href="#" id="remove_choice1" class="remove_field">x</a>
 									</div>
 								  </div>
 								</div>
 								<button type="submit" name="publish" class="btn btn-default">Save and publish</button>
-								<button type="submit" name="notpublish" class="btn btn-default">Save without publish</button>
-							</form>	
+							</form>
+							<div class="form-group has-error">
+								<label id="errorMsg" class="control-label">
+								</label>
+								
+							</div>
 						</div>
 							<!-- Settings form -->
 						<div id="settingsForm" class="tab-pane fade col-lg-12 text-left">
@@ -65,7 +70,7 @@
 							<form role="form">
 								<div class="form-group">
 								  <h3>Privacy</h3>
-								  <button type="button" class="btn btn-default" data-toggle="tooltip" aria-label="Public">
+								  <button type="button" class="btn btn-default active" data-toggle="tooltip" aria-label="Public" >
 									<span class="glyphicon glyphicon-unlock" aria-hidden="true"></span>
 								  </button>
 								  <button type="button" class="btn btn-default" data-toggle="tooltip" aria-label="Private">
@@ -85,10 +90,10 @@
 								  <label for="multSelect">Allow multiple selections</label>
 								  <br>
 								  <label for="voteLabel">Vote button label:</label>
-								  <input type="text" class="form-control" id="voteLabel" value="Vote">
+								  <input type="text" class="form-control" id="voteLabel" value="Vote" required>
 								  <br>
 								  <label for="resultsLabel">See results label:</label>
-								  <input type="text" class="form-control" id="resultsLabel" value="See results">
+								  <input type="text" class="form-control" id="resultsLabel" value="See results" required>
 								</div>
 							</form>
 
@@ -102,7 +107,7 @@
 									<img src="../images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
 								</div>
 							</form>
-								<div id="output"></div>
+								<div id="output" ></div>
 								
 				
 						</div>

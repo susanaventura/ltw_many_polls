@@ -6,11 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Many Polls</title>
 	
-	<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.form.min.js"></script>
-	
 	<!-- Bootstrap Core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	
 
 	<!-- Custom CSS -->
 	<style>
@@ -24,16 +22,25 @@
 	<link href="../css/round-about.css" rel="stylesheet">
 	<link href="../css/portfolio-item.css" rel="stylesheet">
 	<link href="../css/pollX.css" rel="stylesheet">
+	<link href="../css/simple-sidebar.css" rel="stylesheet">
+
  
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+	<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
 	<script src="../js/bootstrap-filestyle.min.js"></script>
+	
+	<!--<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>-->
+	<!--<script type="text/javascript" src="../js/jquery.form.min.js"></script>-->
+	
 
-	<script src="../js/bootbox.min.js"></script>
+<!--<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'></script>-->
+<!--<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">-->
+
+	<!--<script src="../js/bootbox.min.js"></script>-->
 
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -66,18 +73,24 @@
 	</script>
 	
 	
+	<script type="text/javascript" src="../js/jquery.form.min.js"></script>
 	
 	<script src="../js/addInput.js" language="Javascript" type="text/javascript"></script>
 	<script src="../js/uploadImages.js" language="Javascript" type="text/javascript"></script>
 	<script src="../js/listPolls.js" language="Javascript" type="text/javascript"></script>
 	<script src="../js/googleCharts.js" language="Javascript" type="text/javascript"></script>
 	<script src="../js/pollX.js" language="Javascript" type="text/javascript"></script>
+	<script src="../js/validateInput.js" language="Javascript" type="text/javascript"></script>
 	
 </head>
 
 <body>
 
+    <div id="wrapper" <?php if (!isset($_SESSION['username']))echo 'class="toggled"';?>>
+
+
 	<!-- Navigation -->
+	<div id="page-content-wrapper">
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -98,7 +111,7 @@
 					</li>
 					<?php if (isset($_SESSION['username'])) { ?>
 					<li>
-						<a href="#">My Private Area</a>
+						<a href="" id="menu-toggle">My Private Area</a>
 					</li>
 					<?php } ?>
 					<li>
@@ -114,6 +127,24 @@
 			<!-- /.navbar-collapse -->
 		</div>
 		<!-- /.container -->
+		
+		<!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="../php/pollsListPage.php?searchText=MyPolls">My Polls</a>
+                </li>
+                <li>
+                    <a href="../php/pollsListPage.php?searchText=PollsIveAnswered">Polls I've answered</a>
+                </li>
+				<li>
+                    <a href="">My account settings</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
 	</nav>
 	
+	<div id="page-wrapper">
+	<div class="container-fluid">
 	<div id="modal_container"></div>

@@ -1,4 +1,7 @@
-
+/*
+#Website	http://www.sanwebe.com/2012/05/ajax-image-upload-and-resize-with-jquery-and-php
+#License	http://opensource.org/licenses/MIT
+*/
 $(document).ready(function() { 
 	var options = { 
 			target: '#output',   // target element(s) to be updated with server response 
@@ -19,6 +22,8 @@ function afterSuccess()
 	$('#submit-btn').show(); //hide submit button
 	$('#loading-img').hide(); //hide submit button
 
+	//update preview
+	$("#img-preview").attr('src', $("#img-uploaded").attr('src'));
 }
 
 //function to check file size before uploading.
@@ -29,7 +34,7 @@ function beforeSubmit(){
 		
 		if( !$('#imageInput').val()) //check empty input filed
 		{
-			$("#output").html("Are you kidding me?");
+			$("#output").html("You must select an image...");
 			return false
 		}
 		

@@ -18,41 +18,41 @@
 								<div class="form-group">
 									<label for="firstname" class="col-md-3 control-label">First Name</label>
 									<div class="col-md-9">
-										<input type="text" class="form-control" name="firstname" placeholder="First Name">
+										<input type="text" class="form-control" name="firstname" placeholder="First Name" required>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="lastname" class="col-md-3 control-label">Last Name</label>
 									<div class="col-md-9">
-										<input type="text" class="form-control" name="lastname" placeholder="Last Name">
+										<input type="text" class="form-control" name="lastname" placeholder="Last Name" required>
 									</div>
 								</div>
 								
 								<div class="form-group">
 									<label for="email" class="col-md-3 control-label">Email</label>
 									<div class="col-md-9">
-										<input type="text" class="form-control" name="email" placeholder="Email Address">
+										<input type="email" class="form-control" name="email" placeholder="Email Address" required>
 									</div>
 								</div>
 								
 								<div class="form-group">
 									<label for="username" class="col-md-3 control-label">Username</label>
 									<div class="col-md-9">
-										<input type="text" class="form-control" name="username" placeholder="Username">
+										<input type="text" class="form-control" name="username" placeholder="Username" required>
 									</div>
 								</div>
 								
 								<div class="form-group">
 									<label for="password" class="col-md-3 control-label">Password</label>
 									<div class="col-md-9">
-										<input type="password" class="form-control" name="password" placeholder="Password">
+										<input type="password" class="form-control" name="password" placeholder="Password" required>
 									</div>
 								</div>
 									
 								<div class="form-group">
 									<label for="birth" class="col-md-3 control-label">Birth Date</label>
 									<div class="col-md-9">
-										<input type="date" class="form-control" name="birth">
+										<input type="date" class="form-control" name="birth" required>
 									</div>
 								</div>
 

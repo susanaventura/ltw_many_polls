@@ -11,7 +11,7 @@ function addChoice(divName){
 		//add to form
 		var newdiv = document.createElement('div');
 		newdiv.className = "wrapperChoice";
-		newdiv.innerHTML = "<input id='choice"+choiceCnt+"' type='text' class='form-control' name='choices[]' placeholder='Enter choice'> "+
+		newdiv.innerHTML = "<input id='choice"+choiceCnt+"' type='text' class='form-control' name='choices["+choiceCnt+"]' placeholder='Enter choice'> "+
 							"<a href='#' id='remove_choice"+choiceCnt+
 							"' class='remove_field'>x</a>";
 		document.getElementById(divName).appendChild(newdiv);
@@ -71,6 +71,7 @@ $('.modal').on('shown.bs.modal', function() {
         }
     });
 });
+
 	
 var options = {};
 
@@ -104,6 +105,7 @@ $(document).ready(function(){
 		var output = $(this).val();
 		$("label[for='"+prevDivName+"']").empty().append( $ESAPI.encoder().encodeForHTML(output) );
 	});
+	
 	
 	//update question
 	$("#questionInput").on("keyup", '.form-control', function(){

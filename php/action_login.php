@@ -1,9 +1,7 @@
 <?php
 
-	$refer = $_SERVER['HTTP_REFERER'];
-	echo "Refer: $refer <br>";
+	/*retorna false se user ou psw incorretos, ou o user se funcionar*/
 	$session = session_start();                         // starts the session 
-	echo "Session: $session <br>";
 	  
 	include('../database/connection.php'); // connects to the database
 	include('../database/users.php');      // loads the functions responsible for the users table
@@ -11,16 +9,23 @@
 	$postUser = $_POST['username']; //can be email or username
 	$postPsw = $_POST['password'];
 	 
+	$correctLogin = userExists($postUser) && correctPswUser($postUser, $postPsw);
+	
 
-	if (userExists($postUser) && correctPswUser($postUser, $postPsw)){ // test if user exists
+	if ($correctLogin){ // test if user exists
 		if (strpos($postUser, '@') !== false)
 			$user = getUsername($postUser);
 		else $user = $postUser;
 		
 		$_SESSION['username'] = $user;         // store the username
+			
+		$jsonResponse = array('correctLogin' => true);
+		echo json_encode($jsonResponse);
+		//return;
+	} else {
+		$jsonResponse = array('correctLogin' => false);
+		echo json_encode($jsonResponse);
+		//return;
 	}
- 	
- // if (!empty($_SERVER['HTTP_REFERER'])) header("Location: ".$_SERVER['HTTP_REFERER']);
-	header("Location: ".'http://paginas.fe.up.pt/~ei12009/projeto/php/editPollPage.php');
-
+	
 ?>

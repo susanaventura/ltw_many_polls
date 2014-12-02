@@ -6,6 +6,8 @@ try{
 	  echo $e->getMessage();
   };
   */
+	  
+/**** filtros de pesquisa *****/
 function getAllPublicPolls() {
 	global $db;
 	
@@ -32,7 +34,7 @@ function getUserPolls($user) {
 	global $db;
 	
 	try {
-		var_dump($db);
+
 		 $stmt = $db->prepare('SELECT id, title, owner, image FROM Poll WHERE owner = ?');
 
 		 //var_dump($stmt);
@@ -52,7 +54,29 @@ function getUserPolls($user) {
 
 function getPollsByKeys($text) {
 	global $db;
-	var_dump($db);
+
+	try {
+
+		 $stmt = $db->prepare('SELECT id, title, owner, image FROM Poll WHERE owner = ?');
+
+		 //var_dump($stmt);
+		 $stmt->execute(array($user));   
+		 
+		 $res = $stmt->fetchAll();
+		 
+		 //var_dump($res);
+		 
+		 
+	} catch (PDOException $e) {
+			echo $e->getMessage();
+	}
+		 
+	return $res;
+}
+
+function getPollsUserHasAnswered($user) {
+	global $db;
+/*
 	$string = "%".$text."%";
 	try {
 		
@@ -69,11 +93,10 @@ function getPollsByKeys($text) {
 			echo $e->getMessage();
 	}
 		 
-	return $res;
+	return $res;*/
 }
 
-
-
+/********/
 
 
 class Poll {

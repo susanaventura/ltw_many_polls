@@ -1,6 +1,5 @@
 
- <?php 
-	if(empty($polls)){?>
+ <?php if(empty($polls)){?>
 		<div class="col-lg-12"><p>No polls found</p></div>
 	<? } ?>
 		<div id="wrapperPolls">
@@ -13,7 +12,7 @@
 					</h3>
 				</a>
 			</div>
+			<? } ?>
+			<!-- Admin -->
 		</div>
-<? } ?>
 </div>
-

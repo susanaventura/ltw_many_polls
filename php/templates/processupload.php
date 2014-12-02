@@ -1,4 +1,9 @@
 <?php
+/*
+#Website	http://www.sanwebe.com/2012/05/ajax-image-upload-and-resize-with-jquery-and-php
+#License	http://opensource.org/licenses/MIT
+*/
+
 ############ Configuration ##############
 $thumb_square_size 		= 200; //Thumbnails will be cropped to 200x200 pixels
 $max_image_size 		= 500; //Maximum image size (height and width)
@@ -69,7 +74,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 			/* We have succesfully resized and created thumbnail image
 			We can now output image to user's browser or store information in the database*/
 			echo '<div align="center">';
-			echo '<img class="img-thumbnail" src="../images/upload/'.$thumb_prefix . $new_file_name.'" alt="Thumbnail">';
+			echo '<img id="img-uploaded" class="img-thumbnail" src="../images/upload/'.$thumb_prefix . $new_file_name.'" alt="Thumbnail">';
 			/*echo '<br />';
 			echo '<img src="./templates/upload/'. $new_file_name.'" alt="Resized Image">';*/
 			echo '</div>';
