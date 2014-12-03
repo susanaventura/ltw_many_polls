@@ -76,15 +76,23 @@ function getPollsByKeys($text) {
 
 function getPollsUserHasAnswered($user) {
 	global $db;
-/*
-	$string = "%".$text."%";
+
 	try {
 		
-		 $stmt = $db->prepare('SELECT DISTINCT id, title, owner, image FROM Poll WHERE id in (select poll FROM Question WHERE question LIKE :text) OR title LIKE :text');
-
-
-		 $stmt->bindParam(':text', $string);
-		 $stmt->execute();   
+		 $stmt = $db->prepare('
+			SELECT DISTINCT id, title, owner, image 
+			FROM Poll 
+			WHERE id in 
+				(SELECT DISTINCT Question.poll 
+				 FROM Question, PossibleAnswer, UserAnswerPoll
+				 WHERE 
+					UserAnswerPoll.answer = PossibleAnswer.id AND
+					PossibleAnswer.question = Question.id AND
+					UserAnswerPoll.user = ?
+				)					
+		');
+		
+		 $stmt->execute(array($user));   
 		 
 		 $res = $stmt->fetchAll();
 		 		 
@@ -93,7 +101,7 @@ function getPollsUserHasAnswered($user) {
 			echo $e->getMessage();
 	}
 		 
-	return $res;*/
+	return $res;
 }
 
 /********/
@@ -277,7 +285,7 @@ function submitPoll($user, $title, $image, $isPrivate, $questions) {
 	$insertQuestion = $db->prepare(' INSERT INTO Question(question, poll, multipleAnswers) values (?,?,?)');
 	$insertPossibleAnswer = $db->prepare(' INSERT INTO PossibleAnswer(answer, question) values(?,?)');
 	
-	$insertPoll->execute(array($title, $image, $isPrivate));
+	$insertPoll->execute(array($title, $image, $isPrivate, $user));
 	$pollId =  $db->lastInsertId("id");
 	 
 	foreach($questions as $question) {
