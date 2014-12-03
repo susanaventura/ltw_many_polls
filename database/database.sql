@@ -1,20 +1,20 @@
-PRAGMA foreign_keys = ON;
 
-drop table if exists UserAnswerPoll;
 drop table if exists UsersPoll;
+drop table if exists UserAnswerPoll;
 drop table if exists PossibleAnswer;
 drop table if exists Question;
 drop table if exists Poll;
 drop table if exists User;
 
 
+pragma foreign_keys = ON;
 
 create table User(
 	username varchar PRIMARY KEY,	
 	birthDate date NOT NULL,
 	firstName varchar NOT NULL,
 	lastName varchar NOT NULL,
-	mail varchar UNIQUE,
+	mail varchar NOT NULL UNIQUE,
 	password varchar NOT NULL
 );
 
@@ -42,12 +42,12 @@ create table PossibleAnswer(
 );
 	
 create table UserAnswerPoll(
-	user varchar REFERENCES User(username) ON DELETE CASCADE,
+	user varchar REFERENCES User(username),
 	answer integer REFERENCES PossibleAnswer(id) ON DELETE CASCADE
 );
 
 create table UsersPoll(
-	user varchar REFERENCES User(username) ON DELETE CASCADE,
+	user varchar REFERENCES User(username),
 	poll integer REFERENCES Poll(id) ON DELETE CASCADE
 );
 

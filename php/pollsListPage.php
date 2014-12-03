@@ -1,6 +1,8 @@
 <?php
 	session_start(); 
 
+	echo time();
+	
 	/* include das databases*/
 	include('../database/connection.php');
 	include('../database/polls.php');

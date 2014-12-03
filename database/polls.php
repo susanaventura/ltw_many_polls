@@ -260,7 +260,34 @@ function getResults($question) {
 	}
 	return $results;
 }
-
+/*
+	Função para criar uma poll
+	$questions é um array de questions em que cada elemento tem:
+	'questionText' => texto da pergunta
+	'multipleAnswer' => bool de se é multipleAnswer
+	'answers' => array com o texto de cada answer
+	Tambem funciona se for enviado um elemento só em $questions
+*/
+function submitPoll($user, $title, $image, $isPrivate, $questions) {
+	global $db;
+	
+	if (isset($questions['questionText'])) $questions = array($questions);
+	
+	$insertPoll = $db->prepare(' INSERT INTO Poll(title,image,isPrivate,owner) values(?,?,?,?)');
+	$insertQuestion = $db->prepare(' INSERT INTO Question(question, poll, multipleAnswers) values (?,?,?)');
+	$insertPossibleAnswer = $db->prepare(' INSERT INTO PossibleAnswer(answer, question) values(?,?)');
+	
+	$insertPoll->execute(array($title, $image, $isPrivate));
+	$pollId =  $db->lastInsertId("id");
+	 
+	foreach($questions as $question) {
+		$insertQuestion->execute(array($question['questionText'], $pollId, $question['multipleAnswer']));
+		$questionID = $db->lastInsertId("id");
+		
+		foreach($question['answers'] as $answerText)
+			$insertPossibleAnswer->execute(array($answerText, $questionID));		
+	}
+}
 
 function removePoll($pollId) {
 	global $db;
