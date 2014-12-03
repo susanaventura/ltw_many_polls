@@ -112,7 +112,7 @@ function getPoll($pollid) {
 	global $db;
 	
 	$queryPoll = $db->prepare('SELECT title,image,owner FROM Poll WHERE id = ?');
-	$queryQuestions = $db->prepare('SELECT id,question FROM Question WHERE poll = ?');
+	$queryQuestions = $db->prepare('SELECT id,question, multipleAnswers FROM Question WHERE poll = ?');
 	$queryPossibleAnswer = $db->prepare('SELECT * FROM PossibleAnswer WHERE question = ?');
 	
 	$queryPoll->execute(array($pollid));

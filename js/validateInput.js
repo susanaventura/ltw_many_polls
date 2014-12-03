@@ -6,10 +6,9 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-
-function validateLogin(){
+function validateLogin() {
 	var errorMsg = document.getElementById('errorMsg');
-	
+
 	$.ajax({
         type: "POST",
         url: "../php/action_login.php",
@@ -17,7 +16,7 @@ function validateLogin(){
 		dataType: 'json',
         success: function (res){
 			console.log(res);
-			if(res['correctLogin']===true) {errorMsg.textContent = "OK"; return true;}
+			if(res['correctLogin']===true) {errorMsg.textContent = "OK"; location.reload(); return true;}
 			else {errorMsg.textContent = "Wrong password or username!"; return false;}
 		},
 		error: function(res, status) {

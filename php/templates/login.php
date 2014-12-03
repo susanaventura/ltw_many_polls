@@ -12,7 +12,7 @@
 
 						<div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 							
-						<form id="loginform" name="loginForm" class="form-horizontal" role="form" action="" method="post" onsubmit="return validateLogin();">
+						<form id="loginform" name="loginForm" method="post" class="form-horizontal" role="form" onsubmit="validateLogin(); return false;">
 									
 							<div style="margin-bottom: 25px" class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -39,15 +39,11 @@
 
 								<div style="margin-top:10px" class="form-group">
 									<!-- Button -->
-
 									<div class="col-sm-12 controls">
-									  <input type="submit" id="btn-login" class="btn btn-success" value="Login">
-									  <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
-
+										 <input type="submit" class="btn btn-success" value="Login">
 									</div>
 								</div>
-
-
+									
 								<div class="form-group">
 									<div class="col-md-12 control">
 										<div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >

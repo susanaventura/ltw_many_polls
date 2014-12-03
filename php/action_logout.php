@@ -1,10 +1,11 @@
 <?php
-  session_start();
+session_start();
 
-  $session = session_destroy();
- 
-  echo "Session: $session <br>";
-  $user =  $_SESSION['username'];
-	echo "user: $user <br>";
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
+$session = session_destroy();
+
+echo "Session: $session <br>";
+$user =  $_SESSION['username'];
+echo "user: $user <br>";
+
+header('Location: editPollPage.php');
 ?>

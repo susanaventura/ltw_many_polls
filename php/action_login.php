@@ -21,11 +21,11 @@
 			
 		$jsonResponse = array('correctLogin' => true);
 		echo json_encode($jsonResponse);
-		//return;
+
 	} else {
 		$jsonResponse = array('correctLogin' => false);
 		echo json_encode($jsonResponse);
-		//return;
+
 	}
 	
 ?>

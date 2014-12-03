@@ -105,11 +105,9 @@
 										<input type="submit"  id="submit-btn" value="Upload" class="btn btn-default"/>
 									</div>
 									<img src="../images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
+									<div class="col-xs-12" id="output" ></div>
 								</div>
-							</form>
-								<div id="output" ></div>
-								
-				
+							</form>				
 						</div>
 					</div>
 				</div>

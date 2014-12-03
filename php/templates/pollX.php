@@ -32,7 +32,7 @@
 							$chosen = $userAnsweredPoll && in_array($answer['id'], $userAnsweredPoll);
 						?>
 						<div class="wrapperChoice<?if($chosen) echo ' withBorder'?>">
-							<? if($question['multipleAnswers']) {?>
+							<? if($question['multipleAnswers']) { ?>
 							<input type="checkbox" id="choice<?=$answer['id']?>" class="choice" name="choice" value=<?=$answer['id']?> <?if($chosen) echo 'checked'?> <?if($userAnsweredPoll) echo ' disabled'?>> 					
 							<? }else{ ?>
 							<input type="radio" id="choice<?=$answer['id']?>" class="choice" name="choice" value=<?=$answer['id']?> <?if($chosen) echo 'checked'?> <?if($userAnsweredPoll) echo  ' disabled'?>>
