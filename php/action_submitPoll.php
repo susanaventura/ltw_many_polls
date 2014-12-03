@@ -6,21 +6,24 @@
 	include('../database/connection.php'); // connects to the database
 	include('../database/polls.php');      // loads the functions responsible for the users table
 	 
-	//$user = $_SESSION['username'];	
-	$user = 'teste';
-	$questions = array();
+	$user = $_SESSION['username'];
+	$token = $_POST['csrf_token'];
 	
-	$title = $_GET['title'];
-	$image = $_GET['image'];
-	$isPrivate = $_GET['isPrivate'];
+	if (isset($_SESSION['username']) && verifyCSRFToken($token)) {
 	
-	$questions['questionText'] = $_GET['question'];
-	$questions['multipleAnswer'] = $_GET['multipleAnswer']; 
-	$questions['answers'] = json_decode($_GET['answers']);
+		$title = $_POST['title'];
+		$image = $_POST['image'];
+		$isPrivate = $_POST['isPrivate'];
 	
-	foreach($questions['answers'] as $i)
-		echo "$i<br>";
+		$questions = array();
+		$questions['questionText'] = $_POST['question'];
+		$questions['multipleAnswer'] = $_POST['multipleAnswer']; 
+		$questions['answers'] = json_decode($_POST['answers']);
 	
-	submitPoll($user,$title,$image,$isPrivate,$questions);
+		foreach($questions['answers'] as $i)
+			echo "$i<br>";
+	
+		submitPoll($user,$title,$image,$isPrivate,$questions);
+	}
 	
 ?>

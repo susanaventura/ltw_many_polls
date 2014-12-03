@@ -11,13 +11,15 @@
 	 
 	$correctLogin = userExists($postUser) && correctPswUser($postUser, $postPsw);
 	
-
+	include('./templates/tokenHandling.php');
+	
 	if ($correctLogin){ // test if user exists
 		if (strpos($postUser, '@') !== false)
 			$user = getUsername($postUser);
 		else $user = $postUser;
 		
 		$_SESSION['username'] = $user;         // store the username
+		$_SESSION['csrf_token'] = generateRandomToken(); // generate a auth token
 			
 		$jsonResponse = array('correctLogin' => true);
 		echo json_encode($jsonResponse);
