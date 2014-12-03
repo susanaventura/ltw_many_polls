@@ -25,7 +25,6 @@
 	} else {
 		$jsonResponse = array('correctLogin' => false);
 		echo json_encode($jsonResponse);
-
 	}
 	
 ?>
