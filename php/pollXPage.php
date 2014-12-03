@@ -12,8 +12,7 @@
 	
 	$userAnsweredPoll = userAnsweredPoll($user, $_GET['id']);
 	
-	
-	//if($userAnsweredPoll) json_encode($userAnsweredPoll);
+	var_dump($_SESSION);
 	
 	/*$advert = array(
         "ajax" => "Hello world!",

@@ -48,7 +48,7 @@
 					<button type="btn" name="vote" class="btn btn-default" onClick="showResults(); return false;">See results</button>
 					<?}?>
 					<hr>
-					<button name="share" class="btn btn-default">Share</button>
+					<?php include('socialShares.php') ?>
 				</form>
             </div>
 			<?}?>
