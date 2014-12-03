@@ -88,6 +88,29 @@
 
     <div id="wrapper" <?php if (!isset($_SESSION['username']))echo 'class="toggled"';?>>
 
+		<!-- confirmation modal -->
+		<div id="confirmationModal" class="modal fade">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <!-- dialog header -->
+			  <div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				  <h4 class="modal-title">Confirmation</h4>
+			  </div>
+			  <!-- dialog body -->
+			  <div class="modal-body">
+				<p id="confirmation"></p>
+			  </div>
+			  <!-- dialog buttons -->
+			  <div class="modal-footer">
+				<button id="yesBtn" type="button" class="btn btn-primary">Yes</button>
+				<button id="noBtn" type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">No</button>
+			</div>
+			</div>
+		  </div>
+		</div>
+		<!-- --confirmation modal-- -->
+	
 
 	<!-- Navigation -->
 	<div id="page-content-wrapper">

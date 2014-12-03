@@ -261,4 +261,25 @@ function getResults($question) {
 	return $results;
 }
 
+
+function removePoll($pollId) {
+	global $db;
+	
+	$deleteQuery = $db->prepare('DELETE FROM Poll WHERE id = ?');
+	
+	$deleteQuery->execute(array($pollId));
+	
+}
+
+function removeUser($username) {
+	
+	global $db;
+	
+	$deleteQuery = $db->prepare('DELETE FROM User WHERE username = ?');
+	
+	$deleteQuery->execute(array($username));
+	
+}
+
+
 ?>

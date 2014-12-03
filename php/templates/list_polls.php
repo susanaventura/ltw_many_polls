@@ -12,12 +12,12 @@
 						<small><?=$row['owner']?></small>
 					</h3>
 				</a>
-			</div>
-			<!-- Admin -->
-			<div class="wrapperTools col-lg-4 col-sm-6 text-center">
-				<button type="button" class="btn btn-default" data-toggle="tooltip" aria-label="Public" >
-				<span class="glyphicons glyphicons-circle-remove" aria-hidden="true"></span>
-				</button>
+				<!-- Admin -->
+				<div>
+					<a href="" onClick="removePoll(<?=$row['id']?>); return false;">
+						<img src="../images/removePoll_icon.png" />
+					</a>
+				</div>
 			</div>
 		</div>
 <? } ?>

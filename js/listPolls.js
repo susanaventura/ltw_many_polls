@@ -1,3 +1,22 @@
+function showInformationDialog(text, action){
+	
+	var confirmationDialog = document.getElementById("confirmationModal");
+	$(confirmationDialog).find("#yesBtn").remove();
+	$(confirmationDialog).find("#noBtn").text("Ok");
+	$( "#confirmation" ).text( text );
+	
+	if(action === "reload"){
+		$(confirmationDialog).find("#noBtn").one('click', function(){
+			location.reload();
+		});
+	}
+	
+	
+	$(confirmationDialog).modal('show');
+	
+	
+}
+
 
 
 var pollDialog; 
@@ -27,42 +46,45 @@ function showPoll($pollTitle){
 	$(pollDialog).find("#modalPoll").modal('show');
 		
 };
-/*
-if(window.location.href.indexOf('id') != -1) {
-    showPoll('nhe');
-  }*/
-/*
-$(document).ready(function() {
- 
-  if(window.location.href.indexOf('id') != -1) {
-    showPoll('nhe');
-  }
- 
-});*/
-  /*
-$('#modalPoll').on('.aria-hidden', function () {
-  document.location.reload(true);
-})
-*/
+//$(loginDialog).find("#modalLogin").modal('show');
 
-/*
-var function getOutput($pollTitle) {
-   $.ajax({
-      url:'myAjax.php',
-      complete: function (response) {
-		  $coiso = $(pollDialog).find("#title #titleText");
-		  $coiso.text($pollTitle['title']);
-		$nhe = $(pollDialog).find("#title #userText");
-		$nhe.text($pollTitle['title']);
-          $('#output').html(response.responseText);
-      },
-      error: function () {
-		  alert("error");
-      }
-  });
-  return false;
+function removePoll(pollId){
+	
+	//ask for confirmation
+	var confirmationDialog = document.getElementById("confirmationModal");
+	$( "#confirmation" ).text( "Are you sure you want to remove the poll?" );
+		
+	$(confirmationDialog).find("#yesBtn").one('click', function(e){
+		e.preventDefault();
+			$.ajax({
+			type: "POST",
+			url: "../php/action_removePoll.php",
+			data: {id : pollId},
+			dataType: 'json',
+			success: function (res){
+				console.log(res);
+				if(res['status']===true) {
+					//$(confirmationDialog).modal('hide');
+					//location.reload();
+					showInformationDialog("Poll removed", "reload");
+					return false;
+				}
+			},
+			error: function(res, status) {
+				console.log(res);
+				console.log(status);
+				return false;
+			}
+		});	
+	});
+	
+	$(confirmationDialog).modal('show');
+
 }
-*/
+
+
+
+
 
 $('.modal').on('shown.bs.modal', function() {
     $(this).find('.modal-dialog-center').css({
