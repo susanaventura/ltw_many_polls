@@ -197,7 +197,7 @@ function giveAnswer($user, $poll, $answers) {
 	
 	foreach($answers as $answer) {
 		//$insertAnswer->execute(array($user,$answer));
-		echo "userAnswerPoll($user, $answer) <br>";
+		//echo "userAnswerPoll($user, $answer) <br>";
 	}
 
 }

@@ -38,11 +38,17 @@
 						<!-- Poll Form -->
 						<div id="pollForm" class="tab-pane fade in active col-lg-12 text-left">
 							<h2>Poll</h2>
-							<form role="form" name="EditPollForm" onsubmit="return validatePollSubmit(<?=isset($_SESSION['username'])?>);">
+							<form role="form" name="EditPollForm" onsubmit="validatePollSubmit('<?=$_SESSION['username']?>', '<?=$_SESSION['csrf_token']?>'); return false;">
+								<div class="form-group">
+									<div id="pollTitleInput">
+									  <label for="pollTitle">Title</label>
+									  <input type="text" class="form-control" name="pollTitle" placeholder="Enter title" required>
+									</div>
+								</div>
 								<div class="form-group">
 									<div id="questionInput">
 									  <label for="question">Question</label>
-									  <input type="text" class="form-control" name="question" placeholder="Enter question">
+									  <input type="text" class="form-control" name="question" placeholder="Enter question" required>
 									</div>
 								</div>
 								<div class="form-group">
@@ -50,7 +56,7 @@
 								  <button class="btn btn-default btn_addChoice" onClick="addChoice('choiceInput'); return false;">Add choice</button>   
 								  <div id="choiceInput">
 									<div class="wrapperChoice">
-										<input id="choice1" type="text" class="form-control" name="choices[0]" placeholder="Enter choice">
+										<input id="choice1" type="text" class="form-control" name="choices[]" placeholder="Enter choice">
 										<a href="#" id="remove_choice1" class="remove_field">x</a>
 									</div>
 								  </div>
@@ -67,7 +73,7 @@
 						<div id="settingsForm" class="tab-pane fade col-lg-12 text-left">
 							<h2>Settings</h2>
 							
-							<form role="form">
+							<form role="form" name="settingsForm">
 								<div class="form-group">
 								  <h3>Privacy</h3>
 								  <button type="button" class="btn btn-default active" data-toggle="tooltip" aria-label="Public" >

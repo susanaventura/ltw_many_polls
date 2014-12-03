@@ -11,7 +11,7 @@ function addChoice(divName){
 		//add to form
 		var newdiv = document.createElement('div');
 		newdiv.className = "wrapperChoice";
-		newdiv.innerHTML = "<input id='choice"+choiceCnt+"' type='text' class='form-control' name='choices["+choiceCnt+"]' placeholder='Enter choice'> "+
+		newdiv.innerHTML = "<input id='choice"+choiceCnt+"' type='text' class='form-control' name='choices[]' placeholder='Enter choice'> "+
 							"<a href='#' id='remove_choice"+choiceCnt+
 							"' class='remove_field'>x</a>";
 		document.getElementById(divName).appendChild(newdiv);
