@@ -86,6 +86,7 @@
 
 <body>
 
+
     <div id="wrapper" <?php if (!isset($_SESSION['username']))echo 'class="toggled"';?>>
 
 		<!-- confirmation modal -->

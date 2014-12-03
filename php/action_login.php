@@ -11,7 +11,7 @@
 	 
 	$correctLogin = userExists($postUser) && correctPswUser($postUser, $postPsw);
 	
-	include('./templates/tokenHandling.php');
+	include('../php/templates/tokenHandling.php');
 	
 	if ($correctLogin){ // test if user exists
 		if (strpos($postUser, '@') !== false)

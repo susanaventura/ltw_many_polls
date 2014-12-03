@@ -11,20 +11,17 @@ echo "hello <br>";
 	$postUser = $_POST['username']; 
 	$postPsw = $_POST['password'];
  
-	echo "postUser: $postUser <br>";
-	echo "postPsw: $postPsw <br>";  
-	
-	echo phpversion();
-	
+	include('../php/templates/tokenHandling.php');
+ 
 	if (!userExists($postUser) && !userExists($_POST['email'])){ // test if user exists
 		$user = signupUser($_POST['username'], $_POST['birth'], $_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password']);
-		$_SESSION['username'] = $user;         // store the username
+		$_SESSION['username'] = $postUser;         // store the username
+		$_SESSION['csrf_token'] = generateRandomToken();
 	}
 	
 
 	echo "OK<br>";
 	
- // if (!empty($_SERVER['HTTP_REFERER'])) header("Location: ".$_SERVER['HTTP_REFERER']);
-	header("Location: ".'http://paginas.fe.up.pt/~ei12009/projeto/php/editPollPage.php');
+  if (!empty($_SERVER['HTTP_REFERER'])) header("Location: ".$_SERVER['HTTP_REFERER']);
 
 ?>
