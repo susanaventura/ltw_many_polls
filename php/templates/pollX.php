@@ -21,7 +21,7 @@
             </div>
 			<? foreach( $poll->questions as $question) {?>
             <div class="col-md-6">
-				<form role="form" method="post">
+				<form role="form" method="post" onsubmit="validateSubmitVote('<?=$_SESSION['username']?>', '<?=$_SESSION['csrf_token']?>','<?=$poll->id?>', '<?=$question['id']?>') ; return false;">
 					<div class="form-group">
 						<h3>Question</h3>
 						<p><?=$question['question']?></p>
@@ -42,10 +42,13 @@
 						</div>
 						<?}?>	
 					</div>
+					<div class="form-group has-error">
+						<label id="errorMsg" class="control-label"></label>
+					</div>
 					<?if($userAnsweredPoll == false){?>
 					<button type="submit" name="vote" class="btn btn-default" ><?=$poll->voteLabel;?></button>
 					<?} if($userAnsweredPoll){?>
-					<button type="btn" name="vote" class="btn btn-default" onClick="showResults(); return false;"><?=$poll->resultsLabel;?></button>
+					<button type="btn" name="results" class="btn btn-default" onClick="showResults(); return false;"><?=$poll->resultsLabel;?></button>
 					<?}?>
 					<hr>
 					<?php include('socialShares.php') ?>

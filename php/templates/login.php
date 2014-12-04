@@ -4,13 +4,10 @@
 			<div id="loginbox">                      
 				<div class="panel panel-info" >
 					<div class="panel-heading modal-header">
-						<div class="panel-title modal-title">Sign In</div>
-						<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+						<div class="panel-title modal-title">Login</div>
 					</div>     
 
 					<div style="padding-top:30px" class="panel-body modal-body" >
-
-						<div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 							
 						<form id="loginform" name="loginForm" method="post" class="form-horizontal" role="form" onsubmit="validateLogin(); return false;">
 									
@@ -28,15 +25,6 @@
 								<label id="errorMsg" class="control-label"></label>
 							</div>
 								
-							<div class="input-group">
-									  <div class="checkbox">
-										<label>
-										  <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
-										</label>
-									  </div>
-									</div>
-
-
 								<div style="margin-top:10px" class="form-group">
 									<!-- Button -->
 									<div class="col-sm-12 controls">
@@ -49,7 +37,7 @@
 										<div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
 											Don't have an account! 
 											
-										<a href="" onClick="signup(); return false;"><!--onClick="$('#loginbox').hide(); $('#signupbox').show()">-->
+										<a href="" onClick="signup(); return false;">
 											Sign Up Here
 										</a>
 										</div>

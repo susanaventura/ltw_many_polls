@@ -54,10 +54,10 @@ create table UsersPoll(
 );
 
 
-insert into User values('teste', '5-05-1994', 'susana', 'ventura', 'teste@mail.pt', '123');
+insert into User values('admin', '5-05-1994', 'admin', 'admin', 'admin@mail.pt', '$2y$12$ybiyTiXsC/3bDnFLVTGXWebhKpVn7CqXRQKhBRZw2c.3qc/lFPiNy');
 
-insert into Poll values(NULL, 'Loret', 'http://www.jornalglobal.com/wp-content/uploads/2014/10/chocolate.jpg', 0, 'teste', 'Coiso', 'See Results');
-insert into Poll values(NULL, 'Ipsum', 'http://placehold.it/200&text=Many%20Polls', 0, 'teste', 'Vote', 'See Results');
+insert into Poll values(NULL, 'Loret', 'http://www.jornalglobal.com/wp-content/uploads/2014/10/chocolate.jpg', 0, 'admin', 'Coiso', 'See Results');
+insert into Poll values(NULL, 'Ipsum', 'http://placehold.it/200&text=Many%20Polls', 0, 'admin', 'Vote', 'See Results');
 
 insert into Question values(NULL, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae?', 1, 0);
 insert into Question values(NULL, 'ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae?', 2, 1);
@@ -67,13 +67,8 @@ insert into PossibleAnswer values(NULL, 'Integer a lorem ac ex tristique consect
 insert into PossibleAnswer values(NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 2);
 insert into PossibleAnswer values(NULL, 'Integer a lorem ac ex tristique consectetur eget at metus.', 2);
 
-insert into UserAnswerPoll values('teste', 1);
+insert into UserAnswerPoll values('admin', 1);
 
-insert into UsersPoll values('teste', 1);
-insert into UsersPoll values('teste', 2);
+insert into UsersPoll values('admin', 1);
+insert into UsersPoll values('admin', 2);
 
-
-
-
-
-/*insert into users values('teste', '123');*/

@@ -7,7 +7,7 @@
   // Callback that creates and populates a data table,
   // instantiates the pie chart, passes in the data and
   // draws it.
-  function drawCharts(questionText, questionId, answers, values) {
+  function drawCharts(questionText, results) {
 
 	// Create the data table.
 	var data = new google.visualization.DataTable();
@@ -17,9 +17,10 @@
 	answers = ["oi", "oioi"];
 	values = ["1", "2"]
 	
+		/*
   for ( var i = 0; i < answers.length; i++ ) {
 	  data.addRow([JSON.stringify(answers[i]), JSON.stringify(values[i])]);
-  }
+  }*/
 	/*
 	data.addRows([
 	  ['Mushrooms', 3],
@@ -28,13 +29,15 @@
 	  ['Zucchini', 1],
 	  ['Pepperoni', 2]
 	]);*/
+	
+	data.addRows(results);
 
 	// Set chart options
-	var options = {'title': '',
+	var options = {'title': questionText,
 				   'width':600,
 				   'height':500,
 				   'backgroundColor': 'transparent'};
-options.title=questionText;
+	//options.title=questionText;
 			   
 	//change image to img-transparent
 	var img = document.getElementById('pollImage');

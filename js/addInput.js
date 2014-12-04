@@ -65,6 +65,8 @@ function signup(){
 	$(signupDialog).find("#modalSignUp").attr("aria-labelledby", "modalSLabel");
 	$(signupDialog).find("#modalSignUp").attr("aria-hidden", "true");
 	
+	$(loginDialog).find("#modalLogin").modal('hide');
+	
 	$('#modal_container').empty();
 	$('#modal_container').append($(signupDialog));
 	

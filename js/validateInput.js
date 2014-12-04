@@ -140,3 +140,53 @@ function validatePollSubmit(user, token){
 			
 }
 
+
+function validateSubmitVote(username, token, pollId, questionId){
+	var errorMsg = document.getElementById('errorMsg');
+	
+	//check if at least one choice is checked
+	if ($("input[name='choice']:checked").length == 0) {  
+		errorMsg.textContent = "You must select a choice!";
+        return false;
+    }
+	else{
+		errorMsg.textContent = "";
+			
+		var choices_array = [];
+		$("input[name='choice']:checked").each(function(){
+			console.log($(this).val());
+			choices_array.push($(this).val());
+		});
+		
+		$.ajax({
+			type: "GET",
+			url: "../php/action_submitVote.php",
+			data: {	user : username,
+					poll : pollId,
+					csrf_token : token,
+					answers : JSON.stringify(choices_array)},
+			dataType: 'json',
+			success: function (res){
+				console.log(res);
+				if(res['voteSubmitted']===true) {
+					alert("OK");
+					showResults(questionId);
+					return true;
+				}
+				else  {alert("invalid credentials"); return true;}
+			},
+			error: function(res, status) {
+				console.log(res);
+				console.log(status);
+				return false;
+			}
+		});
+		
+		
+		return true;
+	}
+	
+	
+	
+}
+

@@ -1,46 +1,26 @@
-/*
-$.ajax({
-        url : '../php/pollXPage.php',
-        //type : 'POST',
-        //data : 'data',
-        success : function (result) {
-			alert(result["ajax"]); // "Hello world!" alerted
-           //console.log(result['advert']) // The value of your php $row['adverts'] will be displayed
-          // alert(userAnswers); // "Hello world!" alerted
-           //console.log(userAnswers[0]) // The value of your php $row['adverts'] will be displayed
-        },
-        error : function () {
-           alert("error");
-        }
-    })
-		
-*/
-
-/*
-
-function showResults(){
-$.ajax({
-			type: "GET",
-			url: "../database/polls_getResults.php",
-			data: { "id":1 },
-			success: function(result){
-			   alert(result);
-			   //show results
-			   
-			},
-			error: function(){
-			   alert('error');
-			}
-
-		}); // Ajax Call
-}
-
-*/
 	
-function showResults(){
+function showResults(questionId){
 	
 	//$results = document.getElementById("chart").getAttribute("value");
 	//alert($results);
+	console.log("question "+questionId);
+	$.ajax({
+			type: "GET",
+			url: "../php/action_getResults.php",
+			data: {	question : questionId},
+			dataType: 'json',
+			success: function (res){
+				console.log(res);
+			},
+			error: function(res, status) {
+				console.log(res);
+				console.log(status);
+				return false;
+			}
+		});
 	
-	drawCharts('blablabla', '1', 'nhe');
+	
+	
+	
+	//drawCharts('blablabla', '1', 'nhe');
 }

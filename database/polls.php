@@ -208,8 +208,8 @@ function giveAnswer($user, $poll, $answers) {
 	} 	
 	
 	foreach($answers as $answer) {
-		//$insertAnswer->execute(array($user,$answer));
-		//echo "userAnswerPoll($user, $answer) <br>";
+		$insertAnswer->execute(array($user,$answer));
+		
 	}
 
 }
