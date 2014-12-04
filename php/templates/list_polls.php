@@ -20,11 +20,13 @@
 					</h3>
 				</a>
 				<!-- Admin -->
-				<div>
-					<a href="" onClick="removePoll(<?=$row['id']?>,'<?=$_SESSION['csrf_token']?>'); return false;">
-						<img src="../images/removePoll_icon.png" />
-					</a>
-				</div>
+				<?php if (isset($_SESSION['username']) && $row['owner'] == $_SESSION['username']) { ?>
+					<div>
+						<a href="" onClick="removePoll(<?=$row['id']?>,'<?=$_SESSION['csrf_token']?>'); return false;">
+							<img src="../images/removePoll_icon.png" />
+						</a>
+					</div>
+				<?php } ?>
 			</div>
 			<? } ?>
 		</div>

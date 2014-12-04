@@ -17,6 +17,7 @@
 	
 	else $polls = getPollsByKeys($_GET['searchText']);
 	
+
 	
 	/* include templates */
 	include_once("templates/header.php");  

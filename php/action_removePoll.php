@@ -6,7 +6,7 @@
 	include('../database/connection.php'); // connects to the database
 	include('../database/polls.php');      // loads the functions responsible for the users table
 	
-	$postPollId = $_GET['id'];
+	$postPollId = $_POST['id'];
 	$postToken = $_POST['csrf_token'];
 	$poll = getPoll($postPollId);
 	$pollOwner = $poll->owner;

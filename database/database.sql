@@ -54,12 +54,12 @@ create table UsersPoll(
 );
 
 --------------------------------------------- user ---------------------------------------------------
-insert into User values('teste', '5-05-1994', 'Susana', 'Ventura', 'teste@mail.pt', '000');
-insert into User values('CASW134', '12-02-1990', 'Carlos', 'Almeida', 'CASW134@mail.pt', '111');
-insert into User values('AS32_Sil', '25-02-1960', 'Alberto', 'Silva', 'AS32_Sil@mail.pt', '222');
-insert into User values('NL3236_lar', '4-12-1994', 'Nuno', 'Laranja', 'NL3236_lar@mail.pt', '333');
-insert into User values('X_T2313', '5-05-1994', 'Xavier', 'Torrié', 'X_T2313@mail.com.br', '444');
-insert into User values('And_stro_1213', '5-05-1994', 'Andresson', 'Strong', 'And_stro_1213@mail.com', '555');
+insert into User values('teste', '5-05-1994', 'Susana', 'Ventura', 'teste@mail.pt', '$2y$12$QJWQmalLT66Z6Qt5MCXU8uDtOmkOcYLE45c5QdVCvdnLwKNvAE7bS');
+insert into User values('CASW134', '12-02-1990', 'Carlos', 'Almeida', 'CASW134@mail.pt', '$2y$12$QJWQmalLT66Z6Qt5MCXU8uDtOmkOcYLE45c5QdVCvdnLwKNvAE7bS');
+insert into User values('AS32_Sil', '25-02-1960', 'Alberto', 'Silva', 'AS32_Sil@mail.pt', '$2y$12$QJWQmalLT66Z6Qt5MCXU8uDtOmkOcYLE45c5QdVCvdnLwKNvAE7bS');
+insert into User values('NL3236_lar', '4-12-1994', 'Nuno', 'Laranja', 'NL3236_lar@mail.pt', '$2y$12$QJWQmalLT66Z6Qt5MCXU8uDtOmkOcYLE45c5QdVCvdnLwKNvAE7bS');
+insert into User values('X_T2313', '5-05-1994', 'Xavier', 'Torrié', 'X_T2313@mail.com.br', '$2y$12$QJWQmalLT66Z6Qt5MCXU8uDtOmkOcYLE45c5QdVCvdnLwKNvAE7bS');
+insert into User values('And_stro_1213', '5-05-1994', 'Andresson', 'Strong', 'And_stro_1213@mail.com', '$2y$12$QJWQmalLT66Z6Qt5MCXU8uDtOmkOcYLE45c5QdVCvdnLwKNvAE7bS');
 
 --------------------------------------------- poll------------------------------------------------------------
 insert into Poll values(NULL, 'Loret', 'http://www.jornalglobal.com/wp-content/uploads/2014/10/chocolate.jpg', 0, 'teste', 'Coiso', 'See Results');
