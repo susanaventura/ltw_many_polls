@@ -9,7 +9,8 @@
 	else die();
 	
 	if(!isset($_SESSION['username'])) $user = 'anonymous'; else $user = $_SESSION['username'];
-
+	if(!isset($_SESSION['csrf_token'])) $token = ''; else $token = $_SESSION['csrf_token'];
+		
 	$userAnsweredPoll = userAnsweredPoll($user, $_GET['id']);
 	
 	
