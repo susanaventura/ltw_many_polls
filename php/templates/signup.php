@@ -8,30 +8,26 @@
 							<div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
 						</div>  
 						<div class="panel-body modal-body" >
-							<form id="signupform" class="form-horizontal" role="form" action="action_signup.php" method="post">
+							<form id="submitform" name="submitForm" method="post" class="form-horizontal" role="form" onsubmit="validateSignup(); return false;">
 								
-								<div id="signupalert" style="display:none" class="alert alert-danger">
-									<p>Error:</p>
-									<span></span>
-								</div>
-													
+																		
 								<div class="form-group">
-									<label for="firstname" class="col-md-3 control-label">First Name</label>
+									<label for="firstname" class="col-md-3 control-label" >First Name</label>
 									<div class="col-md-9">
-										<input type="text" class="form-control" name="firstname" placeholder="First Name" required>
+										<input type="text" class="form-control" name="firstname" placeholder="First Name" pattern="^\w*$" required>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="lastname" class="col-md-3 control-label">Last Name</label>
 									<div class="col-md-9">
-										<input type="text" class="form-control" name="lastname" placeholder="Last Name" required>
+										<input type="text" class="form-control" name="lastname" placeholder="Last Name" pattern="^\w*$" required>
 									</div>
 								</div>
 								
 								<div class="form-group">
 									<label for="email" class="col-md-3 control-label">Email</label>
 									<div class="col-md-9">
-										<input type="email" class="form-control" name="email" placeholder="Email Address" required>
+										<input type="email" class="form-control" name="email" placeholder="Email Address" pattern="^.*@.*\..*$" required>
 									</div>
 								</div>
 								
@@ -55,22 +51,19 @@
 										<input type="date" class="form-control" name="birth" required>
 									</div>
 								</div>
+								
+								<div class="form-group has-error">
+									<label id="errorMsg" class="control-label"></label>
+								</div>
 
 								<div class="form-group">
 									<!-- Button -->                                        
-									<div class="col-md-offset-3 col-md-9">
+									<div class="col-md-offset-3 col-md-9 text-center">
 										<input id="btn-signup" type="submit" class="btn btn-info" value="Sign Up">
-										<span style="margin-left:8px;">or</span>  
 									</div>
 								</div>
 								
-								<div style="border-top: 1px solid #999; padding-top:20px"  class="form-group">
-									
-									<div class="col-md-offset-3 col-md-9">
-										<button id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i>   Sign Up with Facebook</button>
-									</div>                                           
-										
-								</div>
+			
 								
 								
 								

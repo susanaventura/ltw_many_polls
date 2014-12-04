@@ -28,6 +28,33 @@ function validateLogin() {
     });
 }
 
+function validateSignup() {
+	var errorMsg = document.getElementById('errorMsg');
+
+	$.ajax({
+        type: "POST",
+        url: "../php/action_signup.php",
+        data: { username : $ESAPI.encoder().encodeForHTML(document.forms["submitForm"]["username"].value), 
+				password : document.forms["submitForm"]["password"].value,
+				birth :  $ESAPI.encoder().encodeForHTML(document.forms["submitForm"]["birth"].value),
+				email :  $ESAPI.encoder().encodeForHTML(document.forms["submitForm"]["email"].value),
+				firstname :  $ESAPI.encoder().encodeForHTML(document.forms["submitForm"]["firstname"].value),
+				lastname :  $ESAPI.encoder().encodeForHTML(document.forms["submitForm"]["lastname"].value)
+			  },
+		dataType: 'json',
+        success: function (res){
+			console.log(res);
+			if(res['correctSignup']===true) {errorMsg.textContent = "OK"; location.reload(); return true;}
+			else {errorMsg.textContent = res['errorMsg']; return false;}
+		},
+		error: function(res, status) {
+			console.log(res);
+			console.log(status);
+			return false;
+        }
+    });
+}
+
 
 function repeatedChoices(choices){
 	var choices_aux = [];

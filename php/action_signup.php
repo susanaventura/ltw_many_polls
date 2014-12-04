@@ -1,28 +1,44 @@
 <?php
-echo "hello <br>";
-  $refer = $_SERVER['HTTP_REFERER'];
-  echo "Refer: $refer <br>";
   $session = session_start();                         // starts the session 
-  echo "Session: $session <br>";
+
   
   include('../database/connection.php'); // connects to the database
   include('../database/users.php');      // loads the functions responsible for the users table
+  include('../php/templates/tokenHandling.php');
+	
+	$maxLen = 48;
+	$postUser = substr($_POST['username'], 0, $maxLen); 
+	$postPsw = substr($_POST['password'], 0, $maxLen);
+	$postEmail = substr($_POST['email'], 0, $maxLen);
+	$postBirthDate = $_POST['birth'];
+	$postFirstName = substr($_POST['firstname'], 0, $maxLen);
+	$postLastName = substr($_POST['lastname'], 0, $maxLen);
+	
+	$birthTimeStamp = strtotime($postBirthDate);
+	
  
-	$postUser = $_POST['username']; 
-	$postPsw = $_POST['password'];
- 
-	include('../php/templates/tokenHandling.php');
- 
-	if (!userExists($postUser) && !userExists($_POST['email'])){ // test if user exists
-		$user = signupUser($_POST['username'], $_POST['birth'], $_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password']);
-		$_SESSION['username'] = $postUser;         // store the username
+	if (userExists($postUser)) {
+		$jsonResponse = array('correctSignup' => false, 'errorMsg' => 'Username already exists!');
+		echo json_encode($jsonResponse);
+	} else
+	if (userExists($postEmail)) {
+		$jsonResponse = array('correctSignup' => false, 'errorMsg' => 'Email already exists!');
+		echo json_encode($jsonResponse);
+	} else
+	if ($birthTimeStamp == false || $birthTimeStamp < strtotime('1900-01-01')) {
+		$jsonResponse = array('correctSignup' => false, 'errorMsg' => 'Invalid birth date!');
+		echo json_encode($jsonResponse);
+	} else 
+	{
+		signupUser($postUser, $postBirthDate, $postFirstName, $postLastName, $postEmail, $postPsw);
+		
+		// login new user
+		$_SESSION['username'] = $postUser;
 		$_SESSION['csrf_token'] = generateRandomToken();
+		
+		$jsonResponse = array('correctSignup' => true);
+		echo json_encode($jsonResponse);
 	}
 	
-
-	echo "OK<br>";
-	
-  if (!empty($_SERVER['HTTP_REFERER'])) header("Location: ".$_SERVER['HTTP_REFERER']);
-
 
 ?>
