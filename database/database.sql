@@ -72,10 +72,10 @@ insert into Poll values(NULL, 'Coffee', 'http://placehold.it/200&text=Many%20Pol
 
 -------------------------------------------Question--------------------------------------------------
 insert into Question values(NULL, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae?', 1, 0);
-insert into Question values(NULL, 'Is coca-cola bad to the human body?', 2, 1);
+insert into Question values(NULL, 'Is coca-cola bad to the human body?', 2, 0);
 insert into Question values(NULL, 'Is Porto wine the best wine in the world?', 3, 0);
 insert into Question values(NULL, 'Witch fanta is the best fanta?', 4, 1);
-insert into Question values(NULL, 'What is the level of security you feel in Portutal? 1 = bad and 5 = very good', 5, 0);
+insert into Question values(NULL, 'What is the level of security you feel in Portugal? 1 = bad and 5 = very good', 5, 0);
 insert into Question values(NULL, 'Do you like cooking?', 6, 1);
 insert into Question values(NULL, 'Do you thing about coffee?', 7, 1);
 ------------------------------------------PossibleAnswer--------------------------------------------------------
@@ -101,17 +101,17 @@ insert into PossibleAnswer values(NULL, 'No.', 7);
 
 ---------------------------------------UserAnswerPoll-------------------------------------------------------------
 insert into UserAnswerPoll values('teste', 1);
-insert into UserAnswerPoll values('CASW134', 1);
+insert into UserAnswerPoll values('CASW134', 2);
+insert into UserAnswerPoll values('AS32_Sil', 3);
 insert into UserAnswerPoll values('AS32_Sil', 1);
-insert into UserAnswerPoll values('AS32_Sil', 1);
 insert into UserAnswerPoll values('NL3236_lar', 1);
-insert into UserAnswerPoll values('NL3236_lar', 1);
-insert into UserAnswerPoll values('NL3236_lar', 1);
+insert into UserAnswerPoll values('NL3236_lar', 2);
+insert into UserAnswerPoll values('NL3236_lar', 3);
 insert into UserAnswerPoll values('X_T2313', 1);
-insert into UserAnswerPoll values('X_T2313', 1);
-insert into UserAnswerPoll values('X_T2313', 1);
-insert into UserAnswerPoll values('X_T2313', 1);
-insert into UserAnswerPoll values('teste', 1);
+insert into UserAnswerPoll values('X_T2313', 2);
+insert into UserAnswerPoll values('X_T2313', 3);
+insert into UserAnswerPoll values('X_T2313', 4);
+insert into UserAnswerPoll values('teste', 5);
 
 
 -------------------------------------------UsersPoll-------------------------------------------------------------

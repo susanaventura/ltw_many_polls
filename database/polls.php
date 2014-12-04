@@ -236,36 +236,36 @@ function giveAnswer($user, $poll, $answers) {
 	
 */
 function getResults($question) {
-	global $db;
-	
-	$queryQuestionResults = $db->prepare(' 
-		SELECT 
-			PossibleAnswer.id as answer, PossibleAnswer.answer as answerText, count(UserAnswerPoll.answer) as n
-		FROM 
-			PossibleAnswer left join UserAnswerPoll 
-			ON UserAnswerPoll.answer = PossibleAnswer.id
-		WHERE
-			PossibleAnswer.question = ?
-		GROUP BY
-			PossibleAnswer.id;
-	');
-	$queryQuestionText = $db->prepare('SELECT question FROM Question WHERE id = ?');
-	
-	$queryQuestionResults->execute(array($question));
-	$queryQuestionText->execute(array($question));
-	
-	$res = $queryQuestionResults->fetchAll();
+	 global $db;
+	 
+	 $queryQuestionResults = $db->prepare(' 
+		  SELECT 
+		   PossibleAnswer.id as answer, PossibleAnswer.answer as answerText, count(UserAnswerPoll.answer) as n
+		  FROM 
+		   PossibleAnswer left join UserAnswerPoll 
+		   ON UserAnswerPoll.answer = PossibleAnswer.id
+		  WHERE
+		   PossibleAnswer.question = ?
+		  GROUP BY
+		   PossibleAnswer.id;
+	 ');
+	 $queryQuestionText = $db->prepare('SELECT question FROM Question WHERE id = ?');
+	 
+	 $queryQuestionResults->execute(array($question));
+	 $queryQuestionText->execute(array($question));
+	 
+	 $res = $queryQuestionResults->fetchAll();
 
-	$results = array();
-	$results['questionText'] = $queryQuestionText->fetch()['question'];
-	$results['answers'] = array();
-	
-	foreach($res as $answerRes)
-		array_push($results['answers'], 
-					array((string) $answerRes['answerText'], (int) $answerRes['n']));
-		
-	var_dump($results['answers']);
-	return $results;
+	 $results = array();
+	 $results['questionText'] = $queryQuestionText->fetch()['question'];
+	 $results['answers'] = array();
+	 
+	 foreach($res as $answerRes)
+	  array_push($results['answers'], 
+		 array((string) $answerRes['answerText'], (int) $answerRes['n']));
+	  
+	 //var_dump($results['answers']);
+	 return $results;
 }
 
 /*

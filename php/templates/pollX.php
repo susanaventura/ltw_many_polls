@@ -45,36 +45,24 @@
 					<div class="form-group has-error">
 						<label id="errorMsg" class="control-label"></label>
 					</div>
-					<?if($userAnsweredPoll == false){?>
-					<button type="submit" name="vote" class="btn btn-default" ><?=$poll->voteLabel;?></button>
-					<?} if($userAnsweredPoll){?>
-					<button type="btn" name="results" class="btn btn-default" onClick="showResults(); return false;"><?=$poll->resultsLabel;?></button>
-					<?}?>
+					<div id="buttons">
+						<?if($userAnsweredPoll == false){?>
+						<button type="submit" name="vote" class="btn btn-default" ><?=$poll->voteLabel;?></button><?}?>
+						<button type="btn" id="resultsBtn" class="btn btn-default <? if($userAnsweredPoll == false) echo ' hidden'?>" onClick="showResults('<?=$question['id']?>'); return false;"><?=$poll->resultsLabel;?></button>
+					</div>
 					<hr>
-					<?php include('socialShares.php') ?>
+					<div id="shareBtns">
+						<?php include('socialShares.php') ?>
+						<button type="btn btn-default"  onClick="sharePollLink(); return false;">Share link</button>
+					</div>
 				</form>
             </div>
 			<?}?>
 			<div class="col-md-12">
-				<h3>Results</h3>
-				<?php 
-				if($userAnsweredPoll){?>
+				<h3>Results</h3>		
 					<div id="wrapperResults">
-						<? foreach( $poll->questions as $question) {			
-							$results = getResults($question['id']);
-							//var_dump($results); ?>
-							<div class="col-lg-4 col-sm-6 text-center">
-								<div id="chart_div<?=$question['id']?>" class="chart_div">
-								<div id="chart-question<?=$question['id']?>" value=<?=$results['questionText']?>><?=$results['questionText']?></div>
-								<?foreach($results['answers'] as $id => $answer) {?>
-								<div id="chart-answerText<?=$id?>" value=<?=$answer['text']?>><?=$answer['text']?></div>
-								<div id="chart-answerValue<?=$id?>" value=<?=$answer['n']?>><?=$answer['n']?></div>
-								<?}?>
-								</div>
-							</div>
-						<?} ?>
+						<div id="chart_div"></div>
 					</div>
-				<? } ?>
 				</div>
 			</div>
 			

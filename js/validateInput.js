@@ -169,8 +169,13 @@ function validateSubmitVote(username, token, pollId, questionId){
 			success: function (res){
 				console.log(res);
 				if(res['voteSubmitted']===true) {
-					alert("OK");
+					$("input[name='choice']").each(function(){
+						if($(this).attr("checked") == true)
+							$(this).parent('.wrapperChoice').addClass('withBorder');
+						$(this).attr("disabled", true);
+					});
 					showResults(questionId);
+					document.getElementById('resultsBtn').show();
 					return true;
 				}
 				else  {alert("invalid credentials"); return true;}

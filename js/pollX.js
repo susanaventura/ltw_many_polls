@@ -1,16 +1,17 @@
 	
 function showResults(questionId){
 	
-	//$results = document.getElementById("chart").getAttribute("value");
-	//alert($results);
 	console.log("question "+questionId);
+	
 	$.ajax({
 			type: "GET",
 			url: "../php/action_getResults.php",
 			data: {	question : questionId},
 			dataType: 'json',
 			success: function (res){
-				console.log(res);
+				console.log(res['answers']);
+				
+				drawCharts(res['questionText'], res['answers']);
 			},
 			error: function(res, status) {
 				console.log(res);
@@ -22,5 +23,12 @@ function showResults(questionId){
 	
 	
 	
-	//drawCharts('blablabla', '1', 'nhe');
+	
+}
+
+
+function sharePollLink(){
+	
+	
+	
 }
