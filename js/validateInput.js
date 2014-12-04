@@ -76,7 +76,7 @@ function validatePollSubmit(user, token){
 	
 	var choices_array = [];
 	for(var i = 0; i < allChoices.length; i++){
-		choices_array.push(allChoices[i].value);
+		choices_array.push($ESAPI.encoder().encodeForHTML(allChoices[i].value));
 	}
 	
 	var errorMsg = document.getElementById('errorMsg');
@@ -93,6 +93,7 @@ function validatePollSubmit(user, token){
 		if(choiceCnt <= 1) {errorMsg.textContent = "You must provide at least two different choices!"; return false;}
 		if( !repeatedChoices(choices_array) ){errorMsg.textContent = "All choices must be different!"; return false;}
 	
+		
 		console.log(JSON.stringify(choices_array));
 		console.log(token);
 		console.log(document.forms.EditPollForm.pollTitle.value);
@@ -104,11 +105,13 @@ function validatePollSubmit(user, token){
 			type: "POST",
 			url: "../php/action_submitPoll.php",
 			data: {	csrf_token : token,
-					question : document.forms.EditPollForm.question.value,
-					title : document.forms.EditPollForm.pollTitle.value,
+					question : $ESAPI.encoder().encodeForHTML(document.forms.EditPollForm.question.value),
+					title : $ESAPI.encoder().encodeForHTML(document.forms.EditPollForm.pollTitle.value),
 					image : "http://placehold.it/300&text=placehold.it+rocks!",
 					multipleAnswer : "0",
 					isPrivate : "0",
+					voteLabel : $("#voteLabel").val(),
+					resultsLabel : $("#resultsLabel").val(),
 					answers : JSON.stringify(choices_array)},
 			dataType: 'json',
 			success: function (res){

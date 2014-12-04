@@ -52,7 +52,7 @@ function getUserPolls($user) {
 	return $res;
 }
 
-function getPollsByKeys($text) {
+function getPollsByKeys($user) {
 	global $db;
 
 	try {
@@ -112,6 +112,8 @@ class Poll {
 	public $title;
 	public $owner;
 	public $image;
+	public $voteLabel;
+	public $resultsLabel;
 	
 	public $questions;
 }
@@ -119,7 +121,7 @@ class Poll {
 function getPoll($pollid) {
 	global $db;
 	
-	$queryPoll = $db->prepare('SELECT title,image,owner FROM Poll WHERE id = ?');
+	$queryPoll = $db->prepare('SELECT title,image,owner,voteLabel,resultsLabel FROM Poll WHERE id = ?');
 	$queryQuestions = $db->prepare('SELECT id,question, multipleAnswers FROM Question WHERE poll = ?');
 	$queryPossibleAnswer = $db->prepare('SELECT * FROM PossibleAnswer WHERE question = ?');
 	
@@ -132,6 +134,8 @@ function getPoll($pollid) {
 	$poll->title = $pollRes['title'];
 	$poll->owner = $pollRes['owner'];
 	$poll->image = $pollRes['image'];
+	$poll->voteLabel = $pollRes['voteLabel'];
+	$poll->resultsLabel = $pollRes['resultsLabel'];
 	
 	
 	$queryQuestions->execute(array($pollid));
@@ -276,16 +280,16 @@ function getResults($question) {
 	'answers' => array com o texto de cada answer
 	Tambem funciona se for enviado um elemento só em $questions
 */
-function submitPoll($user, $title, $image, $isPrivate, $questions) {
+function submitPoll($user, $title, $image, $isPrivate, $voteLabel, $submitLabel, $questions) {
 	global $db;
 	
 	if (isset($questions['questionText'])) $questions = array($questions);
 	
-	$insertPoll = $db->prepare(' INSERT INTO Poll(title,image,isPrivate,owner) values(?,?,?,?)');
+	$insertPoll = $db->prepare(' INSERT INTO Poll(title,image,isPrivate,owner,voteButton,submitButton) values(?,?,?,?,?,?)');
 	$insertQuestion = $db->prepare(' INSERT INTO Question(question, poll, multipleAnswers) values (?,?,?)');
 	$insertPossibleAnswer = $db->prepare(' INSERT INTO PossibleAnswer(answer, question) values(?,?)');
 	
-	$insertPoll->execute(array($title, $image, $isPrivate, $user));
+	$insertPoll->execute(array($title, $image, $isPrivate, $user, $voteLabel, $submitLabel));
 	$pollId =  $db->lastInsertId("id");
 	 
 	foreach($questions as $question) {

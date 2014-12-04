@@ -37,8 +37,8 @@
 					<div class="tab-content">
 						<!-- Poll Form -->
 						<div id="pollForm" class="tab-pane fade in active col-lg-12 text-left">
-							<h2>Poll</h2>
-							<form role="form" name="EditPollForm" onsubmit="validatePollSubmit('<?=$_SESSION['username']?>', '<?=$_SESSION['csrf_token']?>'); return false;">
+							<h2>Poll</h2>							
+							<form role="form" name="EditPollForm" onsubmit="validatePollSubmit('<?=$user?>', '<?=$token?>'); return false;">
 								<div class="form-group">
 									<div id="pollTitleInput">
 									  <label for="pollTitle">Title</label>

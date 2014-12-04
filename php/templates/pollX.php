@@ -43,9 +43,9 @@
 						<?}?>	
 					</div>
 					<?if($userAnsweredPoll == false){?>
-					<button type="submit" name="vote" class="btn btn-default" >Vote</button>
+					<button type="submit" name="vote" class="btn btn-default" ><?=$poll->voteLabel;?></button>
 					<?} if($userAnsweredPoll){?>
-					<button type="btn" name="vote" class="btn btn-default" onClick="showResults(); return false;">See results</button>
+					<button type="btn" name="vote" class="btn btn-default" onClick="showResults(); return false;"><?=$poll->resultsLabel;?></button>
 					<?}?>
 					<hr>
 					<?php include('socialShares.php') ?>
