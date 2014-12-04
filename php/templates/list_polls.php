@@ -4,10 +4,17 @@
 		<div class="col-lg-12"><p>No polls found</p></div>
 	<? } ?>
 		<div id="wrapperPolls">
-			<? foreach( $polls as $row) {?>
-			<div class="col-lg-4 col-sm-6 text-center poll"> 
+			<? foreach( $polls as $row) { ?>
+			<div class="row col-lg-3 col-sm-5 text-center poll"> 
 				<a href="pollXPage.php?id=<?=$row['id']?>">
-					<img class="img-circle img-responsive img-center" src=<?=$row['image']?> alt="An image">
+				<? 
+				$posUpload = strpos($row['image'],"upload/");
+				if($posUpload){
+					$pos = $posUpload+7;
+					$thumbImg = substr_replace($row['image'], "thumb_", $pos, 0);
+				} else $thumbImg = "http://placehold.it/200&text=ManyPolls";
+				?>
+					<img class="img-circle img-responsive img-center" src=<?=$thumbImg?> alt="An image">
 					<h3><?=$row['title']?>
 						<small><?=$row['owner']?></small>
 					</h3>
@@ -19,6 +26,6 @@
 					</a>
 				</div>
 			</div>
+			<? } ?>
 		</div>
-<? } ?>
 </div>

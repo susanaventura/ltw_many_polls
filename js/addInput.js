@@ -1,4 +1,16 @@
 
+var privacy = 0;
+function toggleButton(value) { 
+
+   $('.toggleButton.active').removeClass('active');
+   $("button[value='"+value+"']").addClass('active');
+   
+   privacy = value;
+};
+
+function getPrivacy(){return privacy;}
+
+
 //dynamically add choice field
 var choiceCnt = 1; //initial text box count
 var maxChoices = 10;

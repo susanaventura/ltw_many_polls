@@ -27,6 +27,7 @@
 		
 		$jsonResponse = array('pollSubmitted' => true);
 		echo json_encode($jsonResponse);
+		
 	}
 	
 	else {

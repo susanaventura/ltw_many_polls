@@ -277,7 +277,7 @@ function submitPoll($user, $title, $image, $isPrivate, $questions) {
 	$insertQuestion = $db->prepare(' INSERT INTO Question(question, poll, multipleAnswers) values (?,?,?)');
 	$insertPossibleAnswer = $db->prepare(' INSERT INTO PossibleAnswer(answer, question) values(?,?)');
 	
-	$insertPoll->execute(array($title, $image, $isPrivate));
+	$insertPoll->execute(array($title, $image, $isPrivate, $user));
 	$pollId =  $db->lastInsertId("id");
 	 
 	foreach($questions as $question) {

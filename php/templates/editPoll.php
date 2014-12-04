@@ -6,7 +6,7 @@
 				<div class="col-xs-6">
 					<h2>Preview</h2>
 					<div id="previewArea">
-						<img id="img-preview" src="http://placehold.it/200&text=ManyPolls" alt="an image">
+						<img id="img-preview" src="http://placehold.it/500&text=ManyPolls" alt="an image">
 						<div class="form-group">
 						  <label for="questionPreview">Question</label>
 						  <p id="questionPreview" ></p>
@@ -38,7 +38,7 @@
 						<!-- Poll Form -->
 						<div id="pollForm" class="tab-pane fade in active col-lg-12 text-left">
 							<h2>Poll</h2>
-							<form role="form" name="EditPollForm" onsubmit="validatePollSubmit('<?=$_SESSION['username']?>', '<?=$_SESSION['csrf_token']?>'); return false;">
+							<form role="form" method="post" name="EditPollForm" onsubmit="validatePollSubmit('<?=$_SESSION['username']?>', '<?=$_SESSION['csrf_token']?>'); return false;">
 								<div class="form-group">
 									<div id="pollTitleInput">
 									  <label for="pollTitle">Title</label>
@@ -76,13 +76,13 @@
 							<form role="form" name="settingsForm">
 								<div class="form-group">
 								  <h3>Privacy</h3>
-								  <button type="button" class="btn btn-default active" data-toggle="tooltip" aria-label="Public" >
+								  <button type="button" value="0" class="toggleButton btn btn-default active" aria-label="Public" onClick="toggleButton('0')">
 									<span class="glyphicon glyphicon-unlock" aria-hidden="true"></span>
 								  </button>
-								  <button type="button" class="btn btn-default" data-toggle="tooltip" aria-label="Private">
+								  <button type="button" value="1" class="toggleButton btn btn-default" aria-label="Private" onClick="toggleButton('1')">
 									<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
 								  </button>
-								  <button type="button" class="btn btn-default" data-toggle="tooltip" aria-label="Friends only">
+								  <button type="button" value="2" class="toggleButton btn btn-default" aria-label="Friends only" onClick="toggleButton('2')">
 									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 								  </button>
 

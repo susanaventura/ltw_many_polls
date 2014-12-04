@@ -69,9 +69,19 @@ function validatePollSubmit(user, token){
 		console.log(JSON.stringify(choices_array));
 		console.log(token);
 		console.log(document.forms.EditPollForm.pollTitle.value);
-		//console.log(document.forms["settingsForm"]["multSelect"].val());
-	
-		//TODO CHECK BOX VALUE ???
+		
+		console.log($('#multSelect').is(":checked"));
+		//$(this).hasClass('active')
+		console.log($('#multSelect').is(":checked"));
+		
+		console.log(getPrivacy());
+		
+		var multiple;
+		if($('#multSelect').is(":checked")) multiple = "1"; else multiple = "0";
+
+		//envia a imagem maior
+		var img = $("#img-preview").attr('src');
+		console.log(img);
 		
 		$.ajax({
 			type: "POST",
@@ -79,14 +89,14 @@ function validatePollSubmit(user, token){
 			data: {	csrf_token : token,
 					question : document.forms.EditPollForm.question.value,
 					title : document.forms.EditPollForm.pollTitle.value,
-					image : "http://placehold.it/300&text=placehold.it+rocks!",
-					multipleAnswer : "0",
-					isPrivate : "0",
+					image : img,
+					multipleAnswer : multiple,
+					isPrivate : getPrivacy(),
 					answers : JSON.stringify(choices_array)},
 			dataType: 'json',
 			success: function (res){
 				console.log(res);
-				if(res['pollSubmitted']===true) {alert("OK"); return true;}
+				if(res['pollSubmitted']===true) {alert("OK"); window.location.replace("../php/pollsListPage.php?searchText=MyPolls"); return true;}
 				else  {alert("invalid credentials"); return true;}
 			},
 			error: function(res, status) {

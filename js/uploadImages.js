@@ -23,7 +23,8 @@ function afterSuccess()
 	$('#loading-img').hide(); //hide submit button
 
 	//update preview
-	$("#img-preview").attr('src', $("#img-uploaded").attr('src'));
+	var imagePath = $("#img-uploaded").attr('src').replace('thumb_', '');
+	$("#img-preview").attr('src', imagePath);
 }
 
 //function to check file size before uploading.
