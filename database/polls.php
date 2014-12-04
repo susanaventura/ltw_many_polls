@@ -13,7 +13,7 @@ function getAllPublicPolls() {
 	
 	try {
 
-		 $stmt = $db->prepare('SELECT id, title, owner, image FROM Poll WHERE isPrivate = 0');
+		 $stmt = $db->prepare('SELECT id, title, owner, image, isPrivate FROM Poll WHERE isPrivate = 0');
 
 		 //var_dump($stmt);
 		 $stmt->execute();   
@@ -35,7 +35,7 @@ function getUserPolls($user) {
 	
 	try {
 
-		 $stmt = $db->prepare('SELECT id, title, owner, image FROM Poll WHERE owner = ?');
+		 $stmt = $db->prepare('SELECT id, title, owner, image, isPrivate FROM Poll WHERE owner = ?');
 
 		 //var_dump($stmt);
 		 $stmt->execute(array($user));   
@@ -52,26 +52,26 @@ function getUserPolls($user) {
 	return $res;
 }
 
-function getPollsByKeys($user) {
-	global $db;
+function getPollsByKeys($text) {
+	 global $db;
+	 var_dump($db);
+	 $string = "%".$text."%";
+	 try {
+	  
+	   $stmt = $db->prepare('SELECT DISTINCT id, title, owner, image, isPrivate FROM Poll WHERE id in (select poll FROM Question WHERE question LIKE :text) OR title LIKE :text');
 
-	try {
 
-		 $stmt = $db->prepare('SELECT id, title, owner, image FROM Poll WHERE owner = ?');
-
-		 //var_dump($stmt);
-		 $stmt->execute(array($user));   
-		 
-		 $res = $stmt->fetchAll();
-		 
-		 //var_dump($res);
-		 
-		 
-	} catch (PDOException $e) {
-			echo $e->getMessage();
-	}
-		 
-	return $res;
+	   $stmt->bindParam(':text', $string);
+	   $stmt->execute();   
+	   
+	   $res = $stmt->fetchAll();
+		  
+	   
+	 } catch (PDOException $e) {
+	   echo $e->getMessage();
+	 }
+	   
+	 return $res;
 }
 
 function getPollsUserHasAnswered($user) {
@@ -80,7 +80,7 @@ function getPollsUserHasAnswered($user) {
 	try {
 		
 		 $stmt = $db->prepare('
-			SELECT DISTINCT id, title, owner, image 
+			SELECT DISTINCT id, title, owner, image, isPrivate 
 			FROM Poll 
 			WHERE id in 
 				(SELECT DISTINCT Question.poll 
@@ -103,6 +103,39 @@ function getPollsUserHasAnswered($user) {
 		 
 	return $res;
 }
+
+function getPollsUserCanAnswer($user){
+	global $db;
+
+	try {
+		
+		 $stmt = $db->prepare('
+			SELECT DISTINCT id, title, owner, image, isPrivate 
+			FROM Poll 
+			WHERE id not in 
+				(SELECT DISTINCT Question.poll 
+				 FROM Question, PossibleAnswer, UserAnswerPoll
+				 WHERE 
+					UserAnswerPoll.answer = PossibleAnswer.id AND
+					PossibleAnswer.question = Question.id AND
+					UserAnswerPoll.user = ?
+				)					
+		');
+		
+		 $stmt->execute(array($user));   
+		 
+		 $res = $stmt->fetchAll();
+		 		 
+		 
+	} catch (PDOException $e) {
+			echo $e->getMessage();
+	}
+		 
+	return $res;
+}
+
+
+
 
 /********/
 

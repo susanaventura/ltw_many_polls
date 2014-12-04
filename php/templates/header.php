@@ -125,13 +125,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="./editPollPage.php">Many Polls</a>
+				<a class="navbar-brand" href="./pollsListPage.php">Many Polls</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="./pollsListPage.php">Polls</a>
+						<a href="./editPollPage.php">Create Poll</a>
 					</li>
 					<?php if (isset($_SESSION['username'])) { ?>
 					<li>
@@ -143,7 +143,7 @@
 						<a href="action_logout.php">Logout <?=$_SESSION['username']?></a>
 					<?php } else { ?>
 					 
-						<a href="" onClick="login(); return false;">Login</a>
+						<a href="" onClick="login(); return false;">Login or Sign up</a>
 					<?php } ?>
 					</li>
 				</ul>
@@ -160,6 +160,9 @@
                 </li>
                 <li>
                     <a href="../php/pollsListPage.php?searchText=PollsIveAnswered">Polls I've answered</a>
+                </li>
+				 <li>
+                    <a href="../php/pollsListPage.php?searchText=PollsIcanAnswer">Polls I can answer</a>
                 </li>
 				<li>
                     <a href="">My account settings</a>

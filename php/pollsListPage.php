@@ -12,6 +12,9 @@
 	else if($_GET['searchText'] == "MyPolls")
 		$polls = getUserPolls($_SESSION['username']);
 	
+	else if($_GET['searchText'] == "PollsIcanAnswer")
+		$polls = getPollsUserCanAnswer($_SESSION['username']);
+	
 	else if($_GET['searchText'] == "PollsIveAnswered" && isset($_SESSION['username']))
 		$polls = getPollsUserHasAnswered($_SESSION['username']);
 	

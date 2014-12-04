@@ -13,13 +13,6 @@
 	$userAnsweredPoll = userAnsweredPoll($user, $_GET['id']);
 	
 	
-	
-	/*$advert = array(
-        "ajax" => "Hello world!",
-     );*/
-   // echo json_encode($advert);
-	
-	 
 	 
 	/* include templates */
 	include_once("templates/header.php");  
