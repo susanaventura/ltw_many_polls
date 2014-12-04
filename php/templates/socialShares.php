@@ -26,3 +26,19 @@
 // ]]></script>
 -->
 
+<!-- Share link -->
+<br>
+<button id="shareLinkBtn" type="btn btn-default">Share link</button>
+<div id="shareLinkTextBoxDiv" style="display:inline">
+	<input id="shareLinkTextBox" type="text" value="<?=$_SERVER['REQUEST_URI']?>">
+</div>
+<script>
+	$(document).ready(function(){	
+		$('#shareLinkTextBoxDiv').hide();
+		$('#shareLinkBtn').on('click', function() {
+			$('#shareLinkTextBoxDiv').show();
+			$('#shareLinkTextBox').select();
+		});
+	});
+</script>
+
