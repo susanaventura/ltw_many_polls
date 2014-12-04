@@ -152,6 +152,9 @@
 		</div>
 		<!-- /.container -->
 		
+		
+		
+		
 		<!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
@@ -165,7 +168,7 @@
                     <a href="../php/pollsListPage.php?searchText=PollsIcanAnswer">Polls I can answer</a>
                 </li>
 				<li>
-                    <a href="">My account settings</a>
+                    <a href="../php/accountSettingsPage.php">My account settings</a>
                 </li>
             </ul>
         </div>

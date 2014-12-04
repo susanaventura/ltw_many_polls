@@ -54,6 +54,7 @@ create table UsersPoll(
 );
 
 --------------------------------------------- user ---------------------------------------------------
+insert into User values('admin', '5-05-1994', 'Susana', 'Ventura', 'admin@mail.pt', '$2y$12$QJWQmalLT66Z6Qt5MCXU8uDtOmkOcYLE45c5QdVCvdnLwKNvAE7bS');
 insert into User values('teste', '5-05-1994', 'Susana', 'Ventura', 'teste@mail.pt', '$2y$12$QJWQmalLT66Z6Qt5MCXU8uDtOmkOcYLE45c5QdVCvdnLwKNvAE7bS');
 insert into User values('CASW134', '12-02-1990', 'Carlos', 'Almeida', 'CASW134@mail.pt', '$2y$12$QJWQmalLT66Z6Qt5MCXU8uDtOmkOcYLE45c5QdVCvdnLwKNvAE7bS');
 insert into User values('AS32_Sil', '25-02-1960', 'Alberto', 'Silva', 'AS32_Sil@mail.pt', '$2y$12$QJWQmalLT66Z6Qt5MCXU8uDtOmkOcYLE45c5QdVCvdnLwKNvAE7bS');

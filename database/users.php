@@ -66,4 +66,17 @@
 	return $res['username'];
   }
   
+  function updateUser($username, $firstName, $lastName, $password, $birthDate){
+	  
+	   global $db;
+	   
+	   $updateQuery = $db->prepare('UPDATE User SET firstName = ?, lastName = ?, password = ?, birthDate = ? WHERE username = ?');
+	   
+	   $options = ['cost' => 12];
+	   $passwordhash = password_hash($password, PASSWORD_DEFAULT, $options);
+	   
+	   $updateQuery->execute(array($firstName, $lastName, $passwordhash, $birthDate, $username));
+	  
+  }
+  
 ?>

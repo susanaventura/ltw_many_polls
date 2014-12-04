@@ -7,5 +7,5 @@ echo "Session: $session <br>";
 $user =  $_SESSION['username'];
 echo "user: $user <br>";
 
-header('Location: editPollPage.php');
+header('Location: pollsListPage.php');
 ?>

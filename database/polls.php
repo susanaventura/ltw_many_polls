@@ -330,6 +330,14 @@ function submitPoll($user, $title, $image, $isPrivate, $voteLabel, $submitLabel,
 	}
 }
 
+function changePollPrivacy($pollId, $newPrivacy){
+	global $db;
+	
+	$updateQuery = $db->prepare('UPDATE Poll SET isPrivate = ? WHERE id = ?');
+	
+	$updateQuery->execute(array($newPrivacy, $pollId));
+}
+
 function removePoll($pollId) {
 	global $db;
 	
