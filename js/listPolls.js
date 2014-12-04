@@ -48,7 +48,7 @@ function showPoll($pollTitle){
 };
 //$(loginDialog).find("#modalLogin").modal('show');
 
-function removePoll(pollId){
+function removePoll(pollId, token){
 	
 	//ask for confirmation
 	var confirmationDialog = document.getElementById("confirmationModal");
@@ -59,7 +59,7 @@ function removePoll(pollId){
 			$.ajax({
 			type: "POST",
 			url: "../php/action_removePoll.php",
-			data: {id : pollId},
+			data: {id : pollId, csrf_token : token},
 			dataType: 'json',
 			success: function (res){
 				console.log(res);
@@ -68,7 +68,11 @@ function removePoll(pollId){
 					//location.reload();
 					showInformationDialog("Poll removed", "reload");
 					return false;
+				} else {
+					alert("Invalid credentials!");
+					return true;
 				}
+				
 			},
 			error: function(res, status) {
 				console.log(res);

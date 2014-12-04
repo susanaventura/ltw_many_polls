@@ -248,25 +248,25 @@ function giveAnswer($user, $poll, $answers) {
 }
 
 /*
- Devolve os resultados de uma certa pergunta.
- Output
- Array(2) {
-  ['questionText'] => texto da pergunta
-  ['answers'] => array(numero de respostas possiveis) {
-    array(2) { texto da resposta possivel 1, numero de respostas de utilizadores com esta resposta},
-    array(2) { texto da resposta possivel 2, numero de respostas de utilizadores com esta resposta},
-    (...)
-    array(2) { texto da resposta possivel n, numero de respostas de utilizadores com esta resposta}
-  }
- }
- 
- Exemplo:
- $results = getResults($idPergunta);
- echo "Respostas à pergunta $results['questionText']: <br>";
- foreach($results['answers'] as $answer) {
-  echo "Resposta: $answer['text'] => $answer['n'] respostas. <br>";
- }
- 
+	Devolve os resultados de uma certa pergunta.
+	Output
+	Array(2) {
+		['questionText'] => texto da pergunta
+		['answers'] => array(numero de respostas possiveis) {
+				array(2) { texto da resposta possivel 1, numero de respostas de utilizadores com esta resposta},
+				array(2) { texto da resposta possivel 2, numero de respostas de utilizadores com esta resposta},
+				(...)
+				array(2) { texto da resposta possivel n, numero de respostas de utilizadores com esta resposta}
+		}
+	}
+	
+	Exemplo:
+	$results = getResults($idPergunta);
+	echo "Respostas à pergunta $results['questionText']: <br>";
+	foreach($results['answers'] as $answer) {
+		echo "Resposta: $answer['text'] => $answer['n'] respostas. <br>";
+	}
+	
 */
 function getResults($question) {
 	 global $db;
@@ -300,6 +300,7 @@ function getResults($question) {
 	 //var_dump($results['answers']);
 	 return $results;
 }
+
 /*
 	Função para criar uma poll
 	$questions é um array de questions em que cada elemento tem:
@@ -313,7 +314,7 @@ function submitPoll($user, $title, $image, $isPrivate, $voteLabel, $submitLabel,
 	
 	if (isset($questions['questionText'])) $questions = array($questions);
 	
-	$insertPoll = $db->prepare(' INSERT INTO Poll(title,image,isPrivate,owner,voteButton,submitButton) values(?,?,?,?,?,?)');
+	$insertPoll = $db->prepare(' INSERT INTO Poll(title,image,isPrivate,owner,voteLabel,resultsLabel) values(?,?,?,?,?,?)');
 	$insertQuestion = $db->prepare(' INSERT INTO Question(question, poll, multipleAnswers) values (?,?,?)');
 	$insertPossibleAnswer = $db->prepare(' INSERT INTO PossibleAnswer(answer, question) values(?,?)');
 	

@@ -175,7 +175,7 @@ function validateSubmitVote(username, token, pollId, questionId){
 						$(this).attr("disabled", true);
 					});
 					showResults(questionId);
-					document.getElementById('resultsBtn').show();
+					//document.getElementById('resultsBtn').show();
 					return true;
 				}
 				else  {alert("invalid credentials"); return true;}
