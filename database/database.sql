@@ -23,7 +23,9 @@ create table Poll(
 	title varchar,
 	image varchar,
 	isPrivate integer NOT NULL CHECK(isPrivate = 0 or isPrivate = 1 or isPrivate = 2), --0 public, 1 private, 2 shared with friends
-	owner varchar REFERENCES User(username) ON DELETE CASCADE
+	owner varchar REFERENCES User(username) ON DELETE CASCADE,
+	voteLabel varchar DEFAULT 'Vote',
+	resultsLabel varchar DEFAULT 'Submit'
 );
 
 create table Question(
@@ -54,8 +56,8 @@ create table UsersPoll(
 
 insert into User values('teste', '5-05-1994', 'susana', 'ventura', 'teste@mail.pt', '123');
 
-insert into Poll values(NULL, 'Loret', 'http://www.jornalglobal.com/wp-content/uploads/2014/10/chocolate.jpg', 0, 'teste');
-insert into Poll values(NULL, 'Ipsum', 'http://placehold.it/200&text=Many%20Polls', 0, 'teste');
+insert into Poll values(NULL, 'Loret', 'http://www.jornalglobal.com/wp-content/uploads/2014/10/chocolate.jpg', 0, 'teste', 'Coiso', 'See Results');
+insert into Poll values(NULL, 'Ipsum', 'http://placehold.it/200&text=Many%20Polls', 0, 'teste', 'Vote', 'See Results');
 
 insert into Question values(NULL, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae?', 1, 0);
 insert into Question values(NULL, 'ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae?', 2, 1);

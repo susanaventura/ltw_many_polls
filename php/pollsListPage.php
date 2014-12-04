@@ -1,7 +1,5 @@
 <?php
 	session_start(); 
-
-	echo time();
 	
 	/* include das databases*/
 	include('../database/connection.php');
@@ -14,7 +12,7 @@
 	else if($_GET['searchText'] == "MyPolls")
 		$polls = getUserPolls($_SESSION['username']);
 	
-	else if($_GET['searchText'] == "PollsIveAnswered")
+	else if($_GET['searchText'] == "PollsIveAnswered" && isset($_SESSION['username']))
 		$polls = getPollsUserHasAnswered($_SESSION['username']);
 	
 	else $polls = getPollsByKeys($_GET['searchText']);

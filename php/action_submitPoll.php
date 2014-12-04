@@ -10,20 +10,19 @@
 	$user = $_SESSION['username'];
 	$token = $_POST['csrf_token'];
 	
-
-	
 	if (isset($_SESSION['username']) && verifyCSRFToken($token)) {
 			
 		$title = $_POST['title'];
 		$image = $_POST['image'];
 		$isPrivate = $_POST['isPrivate'];
-	
+		$voteLabel = $_POST['voteLabel'];
+		$resultsLabel= $_POST['resultsLabel'];
 		$questions = array();
 		$questions['questionText'] = $_POST['question'];
 		$questions['multipleAnswer'] = $_POST['multipleAnswer']; 
 		$questions['answers'] = json_decode($_POST['answers']);
 		
-		submitPoll($user,$title,$image,$isPrivate,$questions);
+		submitPoll($user,$title,$image,$isPrivate,$voteLabel,$resultsLabel,$questions);
 		
 		$jsonResponse = array('pollSubmitted' => true);
 		echo json_encode($jsonResponse);

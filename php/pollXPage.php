@@ -9,10 +9,10 @@
 	else die();
 	
 	if(!isset($_SESSION['username'])) $user = 'anonymous'; else $user = $_SESSION['username'];
-	
+
 	$userAnsweredPoll = userAnsweredPoll($user, $_GET['id']);
 	
-	var_dump($_SESSION);
+	
 	
 	/*$advert = array(
         "ajax" => "Hello world!",

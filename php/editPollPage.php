@@ -3,7 +3,8 @@
 	session_start(); 
 
 	/* include das databases*/
-	
+	if(!isset($_SESSION['username'])) $user = 'anonymous'; else $user = $_SESSION['username'];
+	if(!isset($_SESSION['csrf_token'])) $token = ''; else $token = $_SESSION['csrf_token'];
 		
 	/* include templates */
 	include_once("templates/header.php");  
