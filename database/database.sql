@@ -25,7 +25,7 @@ create table Poll(
 	isPrivate integer NOT NULL CHECK(isPrivate = 0 or isPrivate = 1 or isPrivate = 2), --0 public, 1 private, 2 shared with friends
 	owner varchar REFERENCES User(username) ON DELETE CASCADE,
 	voteLabel varchar DEFAULT 'Vote',
-	resultsLabel varchar DEFAULT 'Submit'
+	resultsLabel varchar DEFAULT 'See Results'
 );
 
 create table Question(

@@ -21,7 +21,7 @@
 				</a>
 				<!-- Admin -->
 				<div>
-					<a href="" onClick="removePoll(<?=$row['id']?>); return false;">
+					<a href="" onClick="removePoll(<?=$row['id']?>,'<?=$_SESSION['csrf_token']?>'); return false;">
 						<img src="../images/removePoll_icon.png" />
 					</a>
 				</div>

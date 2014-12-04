@@ -220,15 +220,10 @@ function giveAnswer($user, $poll, $answers) {
 	Array(2) {
 		['questionText'] => texto da pergunta
 		['answers'] => array(numero de respostas possiveis) {
-				[idRespostaPossivel1] => array(2) {
-					['text'] => texto da resposta possivel 1
-					['n'] => numero de respostas de utilizadores com esta resposta
-				}
+				array(2) { texto da resposta possivel 1, numero de respostas de utilizadores com esta resposta},
+				array(2) { texto da resposta possivel 2, numero de respostas de utilizadores com esta resposta},
 				(...)
-				[idRespostaPossivelN] => array(2) {
-					['text'] => texto da resposta possivel n
-					['n'] => numero de respostas de utilizadores com esta resposta
-				}
+				array(2) { texto da resposta possivel n, numero de respostas de utilizadores com esta resposta}
 		}
 	}
 	
@@ -265,13 +260,14 @@ function getResults($question) {
 	$results['questionText'] = $queryQuestionText->fetch()['question'];
 	$results['answers'] = array();
 	
-	foreach($res as $answerRes) {
-		$id = $answerRes['answer'];
-		$results['answers'][$id]['text'] = $answerRes['answerText'];
-		$results['answers'][$id]['n'] = $answerRes['n'];
-	}
+	foreach($res as $answerRes)
+		array_push($results['answers'], 
+					array((string) $answerRes['answerText'], (int) $answerRes['n']));
+		
+	var_dump($results['answers']);
 	return $results;
 }
+
 /*
 	Função para criar uma poll
 	$questions é um array de questions em que cada elemento tem:
@@ -285,7 +281,7 @@ function submitPoll($user, $title, $image, $isPrivate, $voteLabel, $submitLabel,
 	
 	if (isset($questions['questionText'])) $questions = array($questions);
 	
-	$insertPoll = $db->prepare(' INSERT INTO Poll(title,image,isPrivate,owner,voteButton,submitButton) values(?,?,?,?,?,?)');
+	$insertPoll = $db->prepare(' INSERT INTO Poll(title,image,isPrivate,owner,voteLabel,resultsLabel) values(?,?,?,?,?,?)');
 	$insertQuestion = $db->prepare(' INSERT INTO Question(question, poll, multipleAnswers) values (?,?,?)');
 	$insertPossibleAnswer = $db->prepare(' INSERT INTO PossibleAnswer(answer, question) values(?,?)');
 	

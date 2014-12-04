@@ -22,6 +22,7 @@
 		$questions['multipleAnswer'] = $_POST['multipleAnswer']; 
 		$questions['answers'] = json_decode($_POST['answers']);
 		
+		
 		submitPoll($user,$title,$image,$isPrivate,$voteLabel,$resultsLabel,$questions);
 		
 		$jsonResponse = array('pollSubmitted' => true);
