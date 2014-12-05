@@ -22,7 +22,6 @@
 		$poll = $_POST['poll'];
 		$answers = (array) json_decode($_POST['answers']);
 	
-		//var_dump($answers);
 	
 		giveAnswer($user, $poll, $answers);
 		
