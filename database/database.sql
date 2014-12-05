@@ -49,6 +49,7 @@ create table UserAnswerPoll(
 
 
 --------------------------------------------- user ---------------------------------------------------
+insert into User values('anonymous', '2000-01-01', '', '', '', '');
 insert into User values('admin', '1994-05-05', 'Susana', 'Ventura', 'admin@mail.pt', '$2y$12$QJWQmalLT66Z6Qt5MCXU8uDtOmkOcYLE45c5QdVCvdnLwKNvAE7bS');
 insert into User values('teste', '1994-05-15', 'Susana', 'Ventura', 'teste@mail.pt', '$2y$12$QJWQmalLT66Z6Qt5MCXU8uDtOmkOcYLE45c5QdVCvdnLwKNvAE7bS');
 insert into User values('CASW134', '1990-12-02', 'Carlos', 'Almeida', 'CASW134@mail.pt', '$2y$12$QJWQmalLT66Z6Qt5MCXU8uDtOmkOcYLE45c5QdVCvdnLwKNvAE7bS');
