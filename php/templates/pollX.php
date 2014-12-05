@@ -14,7 +14,7 @@
 
         <!-- Portfolio Item Row -->
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6" style="padding-top:25px;">
 				<img id="pollImage" class="img-responsive" src=<?=$poll->image?> alt="">
             </div>
 			<? foreach( $poll->questions as $question) {?>
