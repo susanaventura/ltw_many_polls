@@ -318,3 +318,40 @@ function changeSettings(newPsw, token){
 		}
 	});	
 }
+
+
+function deleteAccount(token){
+	//ask for confirmation
+	var confirmationDialog = document.getElementById("confirmationModal");
+
+	$( "#confirmation" ).text( "Do you really want to delete your account?" );
+
+	$(confirmationDialog).find("#yesBtn").one('click', function(e){
+		e.preventDefault();
+		
+			$.ajax({
+			type: "POST",
+			url: "../php/action_removeUser.php",
+			data: {csrf_token : token},
+			dataType: 'json',
+			success: function (res){
+				console.log(res);
+				if(res['status']===true) {
+				window.location.replace("../php/pollsListPage.php");
+				dialog = document.getElementById('confirmationModal');
+				$(dialog).modal('hide');
+				showInformationDialog("Your account was deleted", "");
+				return true;}
+				else {alert("error");  return false;}
+			},
+			error: function(res, status) {
+				console.log(res);
+				console.log(status);
+				return false;
+			}
+			});	
+				
+	});
+		
+	$(confirmationDialog).modal('show');
+}

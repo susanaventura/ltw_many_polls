@@ -49,14 +49,7 @@
 						</div>
 					</div>
 					
-					<hr>
-					
-					<div class="form-group">
-						<div class="col-md-4 pull-right">
-							<button class="form-control btn btn-default" name="deleteAccount">Delete Account</button>
-						</div>
-					</div>
-					
+
 					<div class="form-group has-error">
 						<label id="errorMsg" class="control-label"></label>
 					</div>
@@ -68,6 +61,11 @@
 						</div>
 					</div>
 				</form>
+				<hr>
+				<div>
+					<div class="col-lg-12 pull-right">
+						<button class="btn btn-default" id="deleteAccount" onClick="deleteAccount('<?=$_SESSION['csrf_token']?>'); return false;">Delete Account</button>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>	
