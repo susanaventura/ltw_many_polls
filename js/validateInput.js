@@ -100,7 +100,7 @@ function validatePollSubmit(user, token){
 	
 	var errorMsg = document.getElementById('errorMsg');
 	
-	if(!user) {
+	if(user == 'anonymous') {
 		errorMsg.textContent = "You must login first!";
 		login();
 		return false;

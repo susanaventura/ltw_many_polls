@@ -57,15 +57,16 @@
 					</div>
             </div>
 			<?}?>
-			<div class="col-lg-12">
+			
+			<div id="resultsDiv" class="col-lg-12">
 				<h3 class="page-header">Results</h3>		
-					<div id="wrapperResults">
-						<div id="chart_div"></div>
-					</div>
+				<div id="wrapperResults">
+					<div id="chart_div"></div>
 				</div>
 			</div>
 			
-        </div>
+		</div>			
+    </div>
         <!-- /.row -->
 
         <!-- Related Projects Row -->
@@ -73,29 +74,7 @@
             <div class="col-lg-12">
                 <h3 class="page-header">Related Polls</h3>
 
-				<div class="col-sm-3 col-xs-6">
-					<a href="#">
-						<img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-					</a>
-				</div>
-
-				<div class="col-sm-3 col-xs-6">
-					<a href="#">
-						<img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-					</a>
-				</div>
-
-				<div class="col-sm-3 col-xs-6">
-					<a href="#">
-						<img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-					</a>
-				</div>
-
-				<div class="col-sm-3 col-xs-6">
-					<a href="#">
-						<img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-					</a>
-				</div>
+				<?php include("list_polls.php"); ?>
             </div>
         </div>
         <!-- /.row -->
