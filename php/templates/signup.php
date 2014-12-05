@@ -32,7 +32,7 @@
 							<div class="form-group">
 								<label for="username" class="col-md-3 control-label">Username</label>
 								<div class="col-md-9">
-									<input type="text" class="form-control" name="username" placeholder="Username" required>
+									<input type="text" class="form-control" name="username" placeholder="Username" pattern="^[^@]*$" required>
 								</div>
 							</div>
 							

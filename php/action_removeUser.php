@@ -13,6 +13,7 @@
 		$_SESSION['csrf_token'] == $_POST['csrf_token']
 		) {
 		
+		removeUser('teste');
 		removeUser($_SESSION['username']);
 		session_destroy();
 	
