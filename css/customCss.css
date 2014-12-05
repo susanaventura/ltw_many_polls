@@ -1,0 +1,37 @@
+
+body{
+background: #649A8C;
+padding-top: 50px !important;
+}
+
+.myContainer {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .myContainer {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .myContainer {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .myContainer {
+    width: 1170px;
+  }
+}
+
+.container
+{
+	background-color: white;
+}
+
+.header-custom{
+/*background: #e6ddcf;*/
+background: #ecf0f1;
+}

@@ -1,7 +1,9 @@
-       <hr>
+
+	   <hr>
 
         <!-- Footer -->
         <footer>
+		
             <div class="row">
                 <div class="col-lg-12 panel-footer text-right">
                     <p>Copyright &copy; Many Polls 2014</p>
@@ -10,7 +12,7 @@
             </div>
             <!-- /.row -->
         </footer>
-
+       </div>
     <!--</div>-->
             <!-- /.container-fluid -->
 

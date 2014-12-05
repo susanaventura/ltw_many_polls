@@ -7,7 +7,8 @@
 	<title>Many Polls</title>
 	
 	<!-- Bootstrap Core CSS -->
-	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<!--<link href="../css/bootstrap.min.css" rel="stylesheet">-->
+	<link href="../css/bootstrap_theme.min.css" rel="stylesheet">
 	
 
 	<!-- Custom CSS -->
@@ -17,6 +18,7 @@
 		/* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 	}
 	</style>
+	<link rel="stylesheet" type="text/css" href="../css/customCss.css">
 	<link rel="stylesheet" type="text/css" href="../css/editPollPage.css">
 	<link rel="stylesheet" type="text/css" href="../css/pollsList.css">
 	<link href="../css/round-about.css" rel="stylesheet">
@@ -115,8 +117,8 @@
 
 	<!-- Navigation -->
 	<!--<div id="page-content-wrapper">-->
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
+	<nav id="superdupernavbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="myContainer">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -172,3 +174,4 @@
 	<!--<div id="page-wrapper">-->
 	<!--<div class="container-fluid">-->
 	<div id="modal_container"></div>
+	

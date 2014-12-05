@@ -1,6 +1,17 @@
 
    <!-- Page Content -->
     <div class="container">
+
+	
+	<!-- Introduction Row -->
+        <div class="row">
+            <div class="header-custom col-lg-12">
+                <h1 class="page-header">Create Poll</h1>
+            </div>
+			
+        </div>
+	
+	
 		<div class="row">
 			<div class="previewPoll">
 				<div class="col-xs-6">
@@ -29,6 +40,7 @@
 		
 			<div class="editPollMenu">
 				<div class="col-xs-6">
+					<h2>Edit</h2>
 					<ul class="nav nav-tabs">
 						<li class="active"><a data-toggle="tab" href="#pollForm">Poll</a></li>
 						<li><a data-toggle="tab" href="#settingsForm">Settings</a></li>
@@ -36,7 +48,7 @@
 					<!-- Poll Tab Menu -->
 					<div class="tab-content">
 						<!-- Poll Form -->
-						<div id="pollForm" class="tab-pane fade in active col-lg-12 text-left">
+						<div id="pollForm" class=" well bs-component tab-pane fade in active col-lg-12 text-left">
 							<h2>Poll</h2>							
 							<form role="form" method="post" name="EditPollForm" onsubmit="validatePollSubmit('<?=$user?>', '<?=$token?>'); return false;">
 								<div class="form-group">
@@ -70,20 +82,17 @@
 							</div>
 						</div>
 							<!-- Settings form -->
-						<div id="settingsForm" class="tab-pane fade col-lg-12 text-left">
+						<div id="settingsForm" class="well bs-component tab-pane fade col-lg-12 text-left">
 							<h2>Settings</h2>
 							
 							<form role="form" name="settingsForm">
 								<div class="form-group">
 								  <h3>Privacy</h3>
 								  <button type="button" value="0" class="toggleButton btn btn-default active" aria-label="Public" onClick="toggleButton('0')">
-									<span class="glyphicon glyphicon-unlock" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 								  </button>
 								  <button type="button" value="1" class="toggleButton btn btn-default" aria-label="Private" onClick="toggleButton('1')">
 									<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-								  </button>
-								  <button type="button" value="2" class="toggleButton btn btn-default" aria-label="Friends only" onClick="toggleButton('2')">
-									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 								  </button>
 
 								</div>
@@ -119,11 +128,3 @@
 				</div>
 			</div>
 		</div>
-    </div>
-	
-	
-    <!-- /.container -->
-
-</body>
-
-</html>

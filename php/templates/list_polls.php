@@ -11,7 +11,7 @@
 			<? foreach( $polls as $row) { 
 					$userAnsweredPoll = userAnsweredPoll($user, $row['id']);
 					?>
-			<div class="row col-lg-3 col-sm-5 text-center poll"> 
+			<div class="col-lg-3 col-sm-5 text-center poll"> 
 				<a href="pollXPage.php?id=<?=$row['id']?>">
 				<? 
 				$posUpload = strpos($row['image'],"upload/");
