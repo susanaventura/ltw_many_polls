@@ -4,7 +4,7 @@
 
         <!-- Portfolio Item Heading -->
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 header-custom">
                 <h1 class="page-header"><?=$poll->title?>
                     <small><?=$poll->owner?></small>
                 </h1>
@@ -51,29 +51,28 @@
 					</div>
 				</form>
 				<hr>
-				<div id="shareBtns">
+				<div id="shareBtns" class="row">
 					<?php include('socialShares.php') ?>
 				</div>
             </div>
 			<?}?>
-			
+
 			<div id="resultsDiv" class="col-lg-12">
-				<h3 class="page-header">Results</h3>		
+				<h3 class="page-header well bs-component">Results</h3>		
 				<div id="wrapperResults">
-					<div id="chart_div"></div>
+					<div id="chart_div" style="width:100%; height:400 display: block; margin: 0 auto;"></div>
 				</div>
 			</div>
+
 			
 		</div>
 
         <!-- /.row -->
 
         <!-- Related Projects Row -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h3 class="page-header">Related Polls</h3>
+        <div class="col-lg-12">
+               <h3 class="page-header well bs-component">Related Polls</h3>
 				<div><?php include("list_polls.php"); ?>
-            </div>
         </div>
         <!-- /.row -->
 	

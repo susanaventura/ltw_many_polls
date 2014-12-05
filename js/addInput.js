@@ -23,9 +23,9 @@ function addChoice(divName){
 		//add to form
 		var newdiv = document.createElement('div');
 		newdiv.className = "wrapperChoice";
-		newdiv.innerHTML = "<input id='choice"+choiceCnt+"' type='text' class='form-control' name='choices[]' placeholder='Enter choice'> "+
-							"<a href='#' id='remove_choice"+choiceCnt+
-							"' class='remove_field'>x</a>";
+		newdiv.innerHTML = '<input id="choice'+choiceCnt+'" type="text" class="form-control" name="choices[]" placeholder="Enter choice"> '+
+							'<a href="" style="font-size:30px; padding-top: 10px; padding-left:5px;" class="add_choice" onClick="addChoice(\'choiceInput\'); return false;">&#43</a> '+
+							'<a href="" id="remove_choice'+choiceCnt+'" style="font-size:30px; font-weight: bold; padding-top: 10px; padding-left:5px;" class="remove_field">&#45</a>';
 		document.getElementById(divName).appendChild(newdiv);
 		
 		//add to preview form
@@ -108,7 +108,7 @@ $(document).ready(function(){
 			console.log(options);
 			//choiceCnt--;
 			
-		} else {alert("You only have one choice field, you cannot remove it");}
+		} else {showInformationDialog("You only have one choice field, you cannot remove it", "");}
 	});
 	
 	
@@ -123,10 +123,14 @@ $(document).ready(function(){
 	
 	//update question
 	$("#questionInput").on("keyup", '.form-control', function(){
-		var divName = $(this).attr('id');
-		var prevDivName = divName+"Preview";
 		var output = $(this).val();
 		$("#questionPreview").empty().append( $ESAPI.encoder().encodeForHTML(output) );
+	});
+	
+	//update title
+	$("#pollTitleInput").on("keyup", '.form-control', function(){
+		var output = $(this).val();
+		$("#previewTitle").empty().append( $ESAPI.encoder().encodeForHTML(output) );
 	});
 	
 	//update buttons vote and see results

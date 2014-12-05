@@ -17,6 +17,7 @@
 				<div class="col-xs-6">
 					<h2>Preview</h2>
 					<div id="previewArea">
+						<h3 id="previewTitle"></h3>
 						<img id="img-preview" src="http://placehold.it/500&text=ManyPolls" alt="an image">
 						<div class="form-group">
 						  <label for="questionPreview">Question</label>
@@ -65,11 +66,11 @@
 								</div>
 								<div class="form-group">
 								  <label for="choiceInput">Choices:</label>					  
-								  <button class="btn btn-default btn_addChoice" onClick="addChoice('choiceInput'); return false;">Add choice</button>   
 								  <div id="choiceInput">
 									<div class="wrapperChoice">
 										<input id="choice1" type="text" class="form-control" name="choices[]" placeholder="Enter choice">
-										<a href="#" id="remove_choice1" class="remove_field">x</a>
+										<a href="" class="add_choice" style="font-size:30px; padding-top: 10px; padding-left:5px;" onClick="addChoice('choiceInput'); return false;">+</a>
+										<a href="" id="remove_choice1" style="font-size:30px; font-weight: bold; padding-top: 10px; padding-left:5px;" class="remove_field">-</a>
 									</div>
 								  </div>
 								</div>
@@ -88,10 +89,10 @@
 							<form role="form" name="settingsForm">
 								<div class="form-group">
 								  <h3>Privacy</h3>
-								  <button type="button" value="0" class="toggleButton btn btn-default active" aria-label="Public" onClick="toggleButton('0')">
+								  <button type="button" value="0" class="toggleButton btn btn-default active" aria-label="Public" onClick="toggleButton('0')" data-toggle="tooltip" data-placement="right" title="Public">
 									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 								  </button>
-								  <button type="button" value="1" class="toggleButton btn btn-default" aria-label="Private" onClick="toggleButton('1')">
+								  <button type="button" value="1" class="toggleButton btn btn-default" aria-label="Private" onClick="toggleButton('1')" data-toggle="tooltip" data-placement="right" title="Private">
 									<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
 								  </button>
 

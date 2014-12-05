@@ -1,5 +1,6 @@
 // Load the Visualization API and the piechart package.
   google.load('visualization', '1.0', {'packages':['corechart']});
+   google.load('visualization', '1.0', {packages: ['charteditor']});
 
   // Set a callback to run when the Google Visualization API is loaded.
   //google.setOnLoadCallback(drawChart);
@@ -20,10 +21,12 @@
 	// Set chart options
 	var options = {'title': questionText,
 				   'width':800,
-				   'height':800,
-				   'backgroundColor': 'transparent'};
+				   'height':400,
+				   'backgroundColor': 'transparent',
+				   animation: {duration: 1000, easing: 'out'}};
 
 	var chart = new google.visualization.PieChart(document.getElementById("chart_div"));
 	chart.draw(data, options);
   }
   
+    

@@ -88,9 +88,6 @@
 
 <body>
 
-
-    <!--<div id="wrapper" <?php if (!isset($_SESSION['username']))echo 'class="toggled"';?>>-->
-
 		<!-- confirmation modal -->
 		<div id="confirmationModal" class="modal fade">
 		  <div class="modal-dialog">
@@ -117,7 +114,7 @@
 
 	<!-- Navigation -->
 	<!--<div id="page-content-wrapper">-->
-	<nav id="superdupernavbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="myContainer">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">

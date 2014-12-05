@@ -35,3 +35,15 @@ padding-top: 50px !important;
 /*background: #e6ddcf;*/
 background: #ecf0f1;
 }
+
+/*
+div#chart_div {
+    width: auto;
+    margin: 0 auto !important;
+	border:10x solid #eee;
+    text-align:center !important;
+}*/
+
+hr{
+	border-top: 2px solid #767878 !important;
+}

@@ -1,17 +1,4 @@
 
-
-<!-- Twitter -->
-
-<script type="text/javascript">// <![CDATA[
-(function() {
-  var t = document.createElement("script");
-  t.type = "text/javascript";
-  t.src = "//platform.twitter.com/widgets.js";
-  t.async = true;
-  document.getElementsByTagName('head')[0].appendChild(t);
-})();
-// ]]></script><a class="twitter-share-button" href="https://twitter.com/share" data-count="horizontal">Tweet</a>
-
 <!-- Facebook -->
 
 <!--
@@ -27,12 +14,15 @@
 -->
 
 <!-- Share link -->
-<br>
+
 <?php require('../php/templates/getURL.php'); ?>
-<button id="shareLinkBtn" type="btn btn-default">Share link</button>
-<div id="shareLinkTextBoxDiv" style="display:inline">
-	<input id="shareLinkTextBox" type="text" value="<?=$pageURL?>">
-</div>
+
+	<div class="col-md-10"><button id="shareLinkBtn" type="btn btn-default">Share link</button>
+		<div id="shareLinkTextBoxDiv"style="display:inline">
+			<input id="shareLinkTextBox" type="text" value="<?=$pageURL?>">
+		</div>
+	</div>
+
 <script>
 	$(document).ready(function(){	
 		$('#shareLinkTextBoxDiv').hide();
@@ -43,3 +33,16 @@
 	});
 </script>
 
+
+	<!-- Twitter -->
+<div class="col-md-2">
+<script type="text/javascript">// <![CDATA[
+(function() {
+  var t = document.createElement("script");
+  t.type = "text/javascript";
+  t.src = "//platform.twitter.com/widgets.js";
+  t.async = true;
+  document.getElementsByTagName('head')[0].appendChild(t);
+})();
+// ]]></script><a class="twitter-share-button" href="https://twitter.com/share" data-count="horizontal">Tweet</a>
+</div>
