@@ -14,10 +14,8 @@
 
         <!-- Portfolio Item Row -->
         <div class="row">
-
             <div class="col-md-6">
-               <!-- <img class="img-responsive" src="http://placehold.it/750x500" alt="">-->
-					<img id="pollImage" class="img-responsive" src=<?=$poll->image?> alt="">
+				<img id="pollImage" class="img-responsive" src=<?=$poll->image?> alt="">
             </div>
 			<? foreach( $poll->questions as $question) {?>
             <div class="col-md-6">
@@ -47,14 +45,15 @@
 					</div>
 					<div id="buttons">
 						<?if($userAnsweredPoll == false){?>
-						<button id="voteButton" type="submit" name="vote" class="btn btn-default" ><?=$poll->voteLabel;?></button><?}?>
+						<button id="voteButton" type="submit" name="vote" class="btn btn-default" ><?=$poll->voteLabel;?></button>
+						<?}?>
 						<button type="btn" id="resultsBtn" class="btn btn-default <? if($userAnsweredPoll == false) echo ' hidden'?>" onClick="showResults('<?=$question['id']?>'); return false;"><?=$poll->resultsLabel;?></button>
 					</div>
-					<hr>
 				</form>
+				<hr>
 				<div id="shareBtns">
-						<?php include('socialShares.php') ?>
-					</div>
+					<?php include('socialShares.php') ?>
+				</div>
             </div>
 			<?}?>
 			
@@ -65,18 +64,17 @@
 				</div>
 			</div>
 			
-		</div>			
-    </div>
+		</div>
+
         <!-- /.row -->
 
         <!-- Related Projects Row -->
         <div class="row">
             <div class="col-lg-12">
                 <h3 class="page-header">Related Polls</h3>
-
-				<?php include("list_polls.php"); ?>
+				<div><?php include("list_polls.php"); ?>
             </div>
         </div>
         <!-- /.row -->
 	
-</div>
+

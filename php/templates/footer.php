@@ -12,21 +12,8 @@
             </div>
             <!-- /.row -->
         </footer>
-       </div>
-    <!--</div>-->
-            <!-- /.container-fluid -->
+    </div>
 
-        <!--</div>-->
-        <!-- /#page-wrapper -->
-
-    <!--</div>-->
-    <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <!--<script src="../js/jquery.js"></script>-->
-
-    <!-- Bootstrap Core JavaScript -->
-    <!--<script src="../js/bootstrap.min.js"></script>-->
 
 	<!-- Menu Toggle Script -->
     <script>
