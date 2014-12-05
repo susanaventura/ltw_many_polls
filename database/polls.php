@@ -74,7 +74,6 @@ function getPollsUserHasAnswered($user) {
 
 	
 	try {
-		
 		 $stmt = $db->prepare('
 			SELECT DISTINCT id, title, owner, image, isPrivate 
 			FROM Poll 
