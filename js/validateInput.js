@@ -145,7 +145,7 @@ function validatePollSubmit(user, token){
 			dataType: 'json',
 			success: function (res){
 				console.log(res);
-				if(res['pollSubmitted']===true) {alert("OK"); window.location.replace("../php/pollsListPage.php?searchText=MyPolls"); return true;}
+				if(res['pollSubmitted']===true) {window.location.replace("../php/pollsListPage.php?searchText=MyPolls"); return true;}
 				else  {alert("invalid credentials"); return true;}
 			},
 			error: function(res, status) {
@@ -237,6 +237,7 @@ function validateNewAccountSettings(oldPsw, token){
 		
 	$(confirmationDialog).modal('show');
 }
+
 
 function showPswDialog(newPsw, token){
 	

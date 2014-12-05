@@ -132,11 +132,11 @@ $(document).ready(function(){
 	//update buttons vote and see results
 	$("#voteLabel").keyup(function() {
 		var output = $(this).val();
-		$("#btn_previewVote").empty().append(output);
+		$("#btn_previewVote").empty().append( $ESAPI.encoder().encodeForHTML(output) );
 	});
 	$("#resultsLabel").keyup(function() {
 		var output = $(this).val();
-		$("#btn_previewSeeResults").empty().append(output);
+		$("#btn_previewSeeResults").empty().append( $ESAPI.encoder().encodeForHTML(output) );
 	});
 	
 	//change between radio buttons e check boxes
