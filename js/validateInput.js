@@ -255,10 +255,8 @@ function showPswDialog(newPsw, token){
 								"<form role='form' name='newPswForm'>"+
 									"<div id='form-group-newpsw' class='form-group'>"+
 										"<p>You are trying to change your password. Please confirm the new password.</p>"+
-										"<label for='newpsw' class='col-md-3 control-label'>Confirm new password</label>"+
-										"<div class='col-md-9'>"+
-											"<input type='password' class='form-control' name='newpsw' placeholder='Your new password' required>"+
-										"</div>"+
+										" <label for='newpsw' class='col-md-12 control-label'>Confirm new password</label>"+
+										"<input type='password' class='form-control' name='newpsw' placeholder='Your new password' required>"+
 									"</div>"+
 								"</form>"+
 							  "</div>"+
