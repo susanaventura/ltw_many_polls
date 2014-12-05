@@ -22,7 +22,7 @@
 	<link href="../css/round-about.css" rel="stylesheet">
 	<link href="../css/portfolio-item.css" rel="stylesheet">
 	<link href="../css/pollX.css" rel="stylesheet">
-	<link href="../css/simple-sidebar.css" rel="stylesheet">
+	<!--<link href="../css/simple-sidebar.css" rel="stylesheet">
 
  
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -87,7 +87,7 @@
 <body>
 
 
-    <div id="wrapper" <?php if (!isset($_SESSION['username']))echo 'class="toggled"';?>>
+    <!--<div id="wrapper" <?php if (!isset($_SESSION['username']))echo 'class="toggled"';?>>-->
 
 		<!-- confirmation modal -->
 		<div id="confirmationModal" class="modal fade">
@@ -111,10 +111,10 @@
 		  </div>
 		</div>
 		<!-- --confirmation modal-- -->
-	
+		<div id="confirmationPsw" class="modal fade"></div>
 
 	<!-- Navigation -->
-	<div id="page-content-wrapper">
+	<!--<div id="page-content-wrapper">-->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -134,8 +134,22 @@
 						<a href="./editPollPage.php">Create Poll</a>
 					</li>
 					<?php if (isset($_SESSION['username'])) { ?>
-					<li>
-						<a href="" id="menu-toggle">My Private Area</a>
+					<li class="dropdown">
+						<a href="#" id="dropdown-menu" class="dropdown-toggle" data-toggle="dropdown">Menu<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="../php/pollsListPage.php?searchText=MyPolls">My Polls</a>
+							</li>
+							<li>
+								<a href="../php/pollsListPage.php?searchText=PollsIveAnswered">Polls I've answered</a>
+							</li>
+							 <li>
+								<a href="../php/pollsListPage.php?searchText=PollsIcanAnswer">Polls I can answer</a>
+							</li>
+							<li>
+								<a href="../php/accountSettingsPage.php?user=<?=$_SESSION['username']?>">My account settings</a>
+							</li>
+						</ul>
 					</li>
 					<?php } ?>
 					<li>
@@ -152,29 +166,9 @@
 		</div>
 		<!-- /.container -->
 		
-		
-		
-		
-		<!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li>
-                    <a href="../php/pollsListPage.php?searchText=MyPolls">My Polls</a>
-                </li>
-                <li>
-                    <a href="../php/pollsListPage.php?searchText=PollsIveAnswered">Polls I've answered</a>
-                </li>
-				 <li>
-                    <a href="../php/pollsListPage.php?searchText=PollsIcanAnswer">Polls I can answer</a>
-                </li>
-				<li>
-                    <a href="../php/accountSettingsPage.php">My account settings</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
+
 	</nav>
 	
-	<div id="page-wrapper">
-	<div class="container-fluid">
+	<!--<div id="page-wrapper">-->
+	<!--<div class="container-fluid">-->
 	<div id="modal_container"></div>
