@@ -1,8 +1,8 @@
 
  <?php 
 	 
-	if(!isset($_SESSION['username'])) $user = 'anonymous';
-	else $user = $_SESSION['username'];
+	if(!isset($_SESSION['username'])) $user = 'anonymous'; else $user = $_SESSION['username'];
+	if(!isset($_SESSION['csrf_token'])) $token = ''; else $token = $_SESSION['csrf_token'];
 	 
 	if(empty($polls)){?>
 		<div class="col-lg-12"><p>No polls found</p></div>
@@ -33,7 +33,7 @@
 					</a>
 				<? } ?>
 				<? if($row['owner'] === $user){ ?>
-					<a href="" onClick="removePoll(<?=$row['id']?>); return false;">
+					<a href="" onClick="removePoll(<?=$row['id']?>,'<?=$token?>'); return false;">
 						<img src="../images/removePoll_icon.png" />
 					</a>
 					<? if($row['isPrivate'] === "1") $privacyBtnImg = "../images/private_icon.png"; else $privacyBtnImg = "../images/public_icon.png"; ?>
