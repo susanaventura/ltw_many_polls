@@ -26,12 +26,15 @@
 					</h3>
 				</a>
 				<!-- Admin -->
+				
 				<div class="row col-lg-12 text-center">
+				<img src="../images/empty_icon.png">
 				<? if(!$userAnsweredPoll){ ?>
 					<a href="../php/pollXPage.php?id=<?=$row['id']?>">
 						<img src="../images/canVote_icon.png" />
 					</a>
-				<? } ?>
+				<? } ?>		
+				
 				<? if($row['owner'] === $user){ ?>
 					<a href="" onClick="removePoll(<?=$row['id']?>,'<?=$token?>'); return false;">
 						<img src="../images/removePoll_icon.png" />
