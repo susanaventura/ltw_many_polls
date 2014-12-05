@@ -64,12 +64,12 @@ insert into User values('And_stro_1213', '1996-06-07', 'Andresson', 'Strong', 'A
 
 --------------------------------------------- poll------------------------------------------------------------
 insert into Poll values(NULL, 'Loret', 'http://www.jornalglobal.com/wp-content/uploads/2014/10/chocolate.jpg', 0, 'teste', 'Coiso', 'See Results');
-insert into Poll values(NULL, 'Coca-cola', 'http://placehold.it/200&text=Many%20Polls', 0, 'teste', 'Vote', 'See Results');
-insert into Poll values(NULL, 'wine', 'http://placehold.it/200&text=Many%20Polls', 1, 'CASW134', 'Vote', 'See Results');
-insert into Poll values(NULL, 'Fanta', 'http://placehold.it/200&text=Many%20Polls', 0, 'CASW134', 'Vote', 'See Results');
-insert into Poll values(NULL, 'security', 'http://placehold.it/200&text=Many%20Polls', 0, 'AS32_Sil', 'Vote', 'See Results');
-insert into Poll values(NULL, 'cooking', 'http://placehold.it/200&text=Many%20Polls', 0, 'AS32_Sil', 'Vote', 'See Results');
-insert into Poll values(NULL, 'Coffee', 'http://placehold.it/200&text=Many%20Polls', 0, 'NL3236_lar', 'Vote', 'See Results');
+insert into Poll values(NULL, 'Coca-cola', '../images/upload/cocacola.jpg', 0, 'teste', 'Vote', 'See Results');
+insert into Poll values(NULL, 'wine', '../images/upload/portowine.jpg', 1, 'CASW134', 'Vote', 'See Results');
+insert into Poll values(NULL, 'Fanta', '../images/upload/fanta.png', 0, 'CASW134', 'Vote', 'See Results');
+insert into Poll values(NULL, 'security', '../images/upload/security.jpg', 0, 'AS32_Sil', 'Vote', 'See Results');
+insert into Poll values(NULL, 'cooking', '../images/upload/cooking.jpg', 0, 'AS32_Sil', 'Vote', 'See Results');
+insert into Poll values(NULL, 'Coffee', '../images/upload/coffe.jpg', 0, 'NL3236_lar', 'Vote', 'See Results');
 
 -------------------------------------------Question--------------------------------------------------
 insert into Question values(NULL, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae?', 1, 0);

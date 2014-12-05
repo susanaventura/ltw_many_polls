@@ -47,7 +47,7 @@
 					</div>
 					<div id="buttons">
 						<?if($userAnsweredPoll == false){?>
-						<button type="submit" name="vote" class="btn btn-default" ><?=$poll->voteLabel;?></button><?}?>
+						<button id="voteButton" type="submit" name="vote" class="btn btn-default" ><?=$poll->voteLabel;?></button><?}?>
 						<button type="btn" id="resultsBtn" class="btn btn-default <? if($userAnsweredPoll == false) echo ' hidden'?>" onClick="showResults('<?=$question['id']?>'); return false;"><?=$poll->resultsLabel;?></button>
 					</div>
 					<hr>

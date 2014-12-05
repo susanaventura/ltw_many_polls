@@ -28,9 +28,10 @@
 
 <!-- Share link -->
 <br>
+<?php require('../php/templates/getURL.php'); ?>
 <button id="shareLinkBtn" type="btn btn-default">Share link</button>
 <div id="shareLinkTextBoxDiv" style="display:inline">
-	<input id="shareLinkTextBox" type="text" value="<?=$_SERVER['REQUEST_URI']?>">
+	<input id="shareLinkTextBox" type="text" value="<?=$pageURL?>">
 </div>
 <script>
 	$(document).ready(function(){	
