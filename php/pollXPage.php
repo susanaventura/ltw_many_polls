@@ -4,6 +4,7 @@
 	/* include das databases*/
 	include('../database/connection.php');
 	include('../database/polls.php');
+	
 	if (isset($_GET['id']))
 		$poll = getPoll($_GET['id']);
 	else die();
@@ -13,8 +14,12 @@
 		
 	$userAnsweredPoll = userAnsweredPoll($user, $_GET['id']);
 	
+	$polls = getUserPolls($poll->owner);
+	foreach($polls as $i => $p) {
+		if ($p['id'] == $poll->id)
+			unset($polls[$i]);
+	}
 	
-	 
 	/* include templates */
 	include_once("templates/header.php");  
 	include_once("templates/pollX.php");

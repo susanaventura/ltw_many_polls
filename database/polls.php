@@ -8,20 +8,16 @@ try{
   */
 	  
 /**** filtros de pesquisa *****/
-function getAllPublicPolls() {
+function getAllPublicPolls($user) {
 	global $db;
 	
 	try {
 
-		 $stmt = $db->prepare('SELECT id, title, owner, image, isPrivate FROM Poll WHERE isPrivate = 0 ORDER BY id DESC');
+		 $stmt = $db->prepare('SELECT id, title, owner, image, isPrivate FROM Poll WHERE isPrivate = 0 OR owner = ? ORDER BY id DESC');
 
-		 //var_dump($stmt);
-		 $stmt->execute();   
+		 $stmt->execute(array($user));   
 		 
-		 $res = $stmt->fetchAll();
-		 
-		 //var_dump($res);
-		 
+		 $res = $stmt->fetchAll();	 
 		 
 	} catch (PDOException $e) {
 			echo $e->getMessage();
@@ -54,12 +50,11 @@ function getUserPolls($user) {
 
 function getPollsByKeys($text) {
 	 global $db;
-	 var_dump($db);
+
 	 $string = "%".$text."%";
 	 try {
 	  
 	   $stmt = $db->prepare('SELECT DISTINCT id, title, owner, image, isPrivate FROM Poll WHERE id in (select poll FROM Question WHERE question LIKE :text) OR title LIKE :text ORDER BY id DESC');
-
 
 	   $stmt->bindParam(':text', $string);
 	   $stmt->execute();   
@@ -77,6 +72,7 @@ function getPollsByKeys($text) {
 function getPollsUserHasAnswered($user) {
 	global $db;
 
+	
 	try {
 		
 		 $stmt = $db->prepare('

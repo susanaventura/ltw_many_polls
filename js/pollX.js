@@ -10,7 +10,8 @@ function showResults(questionId){
 			dataType: 'json',
 			success: function (res){
 				console.log(res['answers']);
-				
+				$('#resultsDiv').show();
+				$('#resultsDiv')[0].scrollIntoView(true);
 				drawCharts(res['questionText'], res['answers']);
 			},
 			error: function(res, status) {
@@ -19,18 +20,13 @@ function showResults(questionId){
 				return false;
 			}
 		});
-	
-	
-	
-	
-	
+
 }
 
 
-function sharePollLink(){
-	
-	
-	
-}
+$(document).ready(function() {
+	$('#resultsDiv').hide();
+
+});
 
 
