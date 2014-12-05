@@ -4,4 +4,5 @@ try{
   } catch (PDOException $e) {
 	  echo $e->getMessage();
   };
+  $db->query('PRAGMA foreign_keys = ON');
 ?>

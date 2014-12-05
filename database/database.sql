@@ -78,7 +78,7 @@ insert into Question values(NULL, 'Is Porto wine the best wine in the world?', 3
 insert into Question values(NULL, 'Witch fanta is the best fanta?', 4, 1);
 insert into Question values(NULL, 'What is the level of security you feel in Portugal? 1 = bad and 5 = very good', 5, 0);
 insert into Question values(NULL, 'Do you like cooking?', 6, 1);
-insert into Question values(NULL, 'Do you thing about coffee?', 7, 1);
+insert into Question values(NULL, 'Do you think about coffee?', 7, 0);
 ------------------------------------------PossibleAnswer--------------------------------------------------------
 insert into PossibleAnswer values(NULL, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1);
 insert into PossibleAnswer values(NULL, 'Integer a lorem ac ex tristique consectetur eget at metus.', 1);

@@ -26,7 +26,6 @@ function showResults(questionId){
 
 $(document).ready(function() {
 	$('#resultsDiv').hide();
-
 });
 
 

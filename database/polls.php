@@ -54,7 +54,7 @@ function getPollsByKeys($text) {
 	 $string = "%".$text."%";
 	 try {
 	  
-	   $stmt = $db->prepare('SELECT DISTINCT id, title, owner, image, isPrivate FROM Poll WHERE id in (select poll FROM Question WHERE question LIKE :text) OR title LIKE :text ORDER BY id DESC');
+	   $stmt = $db->prepare('SELECT DISTINCT id, title, owner, image, isPrivate FROM Poll WHERE id in (select poll FROM Question WHERE question LIKE :text) OR title LIKE :text OR owner like :text ORDER BY id DESC');
 
 	   $stmt->bindParam(':text', $string);
 	   $stmt->execute();   

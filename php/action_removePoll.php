@@ -6,6 +6,12 @@
 	include('../database/connection.php'); // connects to the database
 	include('../database/polls.php');      // loads the functions responsible for the users table
 	
+	if ( !isset($_POST['id']) || !isset($_POST['csrf_token']) ) {
+		$jsonResponse = array('status' => false);
+		echo json_encode($jsonResponse);
+		return;
+	}
+	
 	$postPollId = $_POST['id'];
 	$postToken = $_POST['csrf_token'];
 	$poll = getPoll($postPollId);

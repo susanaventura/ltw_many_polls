@@ -7,7 +7,7 @@ function showPoll($pollTitle){
 	//var $poll = document.getElementById('value').value;
 	//alert($pollTitle);
 	
-	pollDialog = $('<div></div>').load("http://paginas.fe.up.pt/~ei12009/projeto/php/templates/pollX.php");
+	pollDialog = $('<div></div>').load("../php/templates/pollX.php");
 	
 	$(pollDialog).find("#modalPoll").addClass("modal fade");
 	$(pollDialog).find("#modalPoll").attr("tabindex", "-1");
