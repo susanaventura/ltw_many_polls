@@ -111,7 +111,7 @@
 		  </div>
 		</div>
 		<!-- --confirmation modal-- -->
-	
+		<div id="confirmationPsw" class="modal fade"></div>
 
 	<!-- Navigation -->
 	<div id="page-content-wrapper">
@@ -168,7 +168,7 @@
                     <a href="../php/pollsListPage.php?searchText=PollsIcanAnswer">Polls I can answer</a>
                 </li>
 				<li>
-                    <a href="../php/accountSettingsPage.php">My account settings</a>
+                    <a href="../php/accountSettingsPage.php?user=<?=$_SESSION['username']?>">My account settings</a>
                 </li>
             </ul>
         </div>

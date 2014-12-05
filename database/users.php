@@ -66,6 +66,18 @@
 	return $res['username'];
   }
   
+  function getUser($username) {
+	   global $db;
+	   
+	   $query = $db->prepare('SELECT * FROM User WHERE username = ?');
+	   
+	   $query->execute(array($username));
+	   
+	   return $query->fetch();
+	  
+  }
+
+  
   function updateUser($username, $firstName, $lastName, $password, $birthDate){
 	  
 	   global $db;

@@ -19,9 +19,10 @@
 		$polls = getPollsUserHasAnswered($_SESSION['username']);
 	
 	else $polls = getPollsByKeys($_GET['searchText']);
-	
-
-	
+	require('../php/lib/password.php');
+$options = ['cost' => 12];
+	$passwordhash = password_hash('1', PASSWORD_DEFAULT, $options);
+	var_dump($passwordhash);
 	/* include templates */
 	include_once("templates/header.php");  
 	include_once("templates/pollsList.php");

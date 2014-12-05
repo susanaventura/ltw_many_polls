@@ -1,21 +1,4 @@
-function showInformationDialog(text, action){
-	
-	var confirmationDialog = document.getElementById("confirmationModal");
-	$(confirmationDialog).find("#yesBtn").remove();
-	$(confirmationDialog).find("#noBtn").text("Ok");
-	$( "#confirmation" ).text( text );
-	
-	if(action === "reload"){
-		$(confirmationDialog).find("#noBtn").one('click', function(){
-			location.reload();
-		});
-	}
-	
-	
-	$(confirmationDialog).modal('show');
-	
-	
-}
+
 
 
 

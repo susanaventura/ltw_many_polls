@@ -1,3 +1,22 @@
+function showInformationDialog(text, action){
+	
+	var confirmationDialog = document.getElementById("confirmationModal");
+	$(confirmationDialog).find("#yesBtn").remove();
+	$(confirmationDialog).find("#noBtn").text("Ok");
+	$( "#confirmation" ).text( text );
+	
+	if(action === "reload"){
+		$(confirmationDialog).find("#noBtn").one('click', function(){
+			location.reload();
+		});
+	}
+	
+	
+	$(confirmationDialog).modal('show');
+	
+	
+}
+
 
 /*http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript*/
 function getParameterByName(name) {
@@ -190,8 +209,109 @@ function validateSubmitVote(username, token, pollId, questionId){
 		
 		return true;
 	}
-	
-	
-	
 }
 
+
+
+function validateNewAccountSettings(oldPsw, token){
+
+	//ask for confirmation
+	var confirmationDialog = document.getElementById("confirmationModal");
+
+	$( "#confirmation" ).text( "Do you really want to change your account settings?" );
+
+	$(confirmationDialog).find("#yesBtn").one('click', function(e){
+		e.preventDefault();
+		
+		//ask for other confirmation (psw)
+		var newPsw = document.forms["submitForm"]["password"].value;
+		
+		if(newPsw.length > 0)
+			showPswDialog(newPsw, token);
+		else {newPsw = oldPsw; changeSettings(newPsw, token);}
+				
+	});
+		
+	$(confirmationDialog).modal('show');
+}
+
+function showPswDialog(newPsw, token){
+	
+	var dialog = document.getElementById('confirmationPsw');
+	
+	dialog.innerHTML = "<div class='modal-dialog'>"+
+							"<div class='modal-content'>"+
+							  "<!-- dialog header -->"+
+							  "<div class='modal-header'>"+
+								  "<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>"+
+								 "<h4 class='modal-title'>Changing password!</h4>"+
+							  "</div>"+
+							  "<!-- dialog body -->"+
+							  "<div class='modal-body'>"+
+								"<form role='form' name='newPswForm'>"+
+									"<div id='form-group-newpsw' class='form-group'>"+
+										"<p>You are trying to change your password. Please confirm the new password.</p>"+
+										"<label for='newpsw' class='col-md-3 control-label'>Confirm new password</label>"+
+										"<div class='col-md-9'>"+
+											"<input type='password' class='form-control' name='newpsw' placeholder='Your new password' required>"+
+										"</div>"+
+									"</div>"+
+								"</form>"+
+							  "</div>"+
+							  "<!-- dialog buttons -->"+
+							  "<div class='modal-footer'>"+
+								"<button id='yesBtn' type='submit' class='btn btn-primary'>Confirm</button>"+
+								"<button id='noBtn' type='button' class='btn btn-primary' data-dismiss='modal' aria-hidden='true'>Cancel</button>"+
+							   "</div>"+
+							"</div>"+
+						"</div>";
+					
+	$(dialog).find("#yesBtn").one('click', function(e){
+		e.preventDefault();
+
+		if(document.forms["newPswForm"]["newpsw"].value === newPsw)
+			{
+				$(dialog).find("#form-group-newpsw").addClass("has-success");
+				changeSettings(newPsw, token);
+				return true;
+			}
+			else {
+				$(dialog).find("#form-group-newpsw").addClass("has-error");
+				return false;
+			}
+		
+	});
+					
+	$(dialog).modal('show');
+}
+
+function changeSettings(newPsw, token){
+	$.ajax({
+		type: "POST",
+		url: "../php/action_changeAccountSettings.php",
+		data: { username : $ESAPI.encoder().encodeForHTML(document.forms["submitForm"]["username"].value), 
+				password : newPsw,
+				birthDate :  $ESAPI.encoder().encodeForHTML(document.forms["submitForm"]["birth"].value),
+				firstName :  $ESAPI.encoder().encodeForHTML(document.forms["submitForm"]["firstname"].value),
+				lastName :  $ESAPI.encoder().encodeForHTML(document.forms["submitForm"]["lastname"].value),
+				csrf_token : token
+			  },
+		dataType: 'json',
+		success: function (res){
+			console.log(res);
+			if(res['status']===true) {
+			location.reload(); 
+			var dialog = document.getElementById('confirmationPsw');
+			$(dialog).modal('hide');
+			dialog = document.getElementById('confirmationModal');
+			$(dialog).modal('hide');
+			return true;}
+			else {alert("error");  return false;}
+		},
+		error: function(res, status) {
+			console.log(res);
+			console.log(status);
+			return false;
+		}
+	});	
+}

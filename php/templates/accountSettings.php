@@ -5,46 +5,47 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">My account settings</h1>
-
-				<form id="submitform" name="submitForm" method="post" class="form-horizontal" role="form" onsubmit="validateSignup(); return false;">						
+				<? $oldPsw = $userSettings['password'];?>
+				<form id="submitform" name="submitForm" method="post" class="form-horizontal" role="form"
+				onsubmit="validateNewAccountSettings('<?=$oldPsw?>', '<?=$_SESSION['csrf_token']?>'); return false;">						
 					<div class="form-group">
 						<label for="firstname" class="col-md-3 control-label" >First Name</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" name="firstname" placeholder="First Name" pattern="^\w*$" required>
+							<input type="text" class="form-control" name="firstname" placeholder="First Name" pattern="^\w*$" value="<?=$userSettings['firstName']?>" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="lastname" class="col-md-3 control-label">Last Name</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" name="lastname" placeholder="Last Name" pattern="^\w*$" required>
+							<input type="text" class="form-control" name="lastname" placeholder="Last Name" pattern="^\w*$" value="<?=$userSettings['lastName']?>"required>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="email" class="col-md-3 control-label">Email</label>
 						<div class="col-md-9">
-							<input type="email" class="form-control" name="email" placeholder="Email Address" pattern="^.*@.*\..*$" disabled>
+							<input type="email" class="form-control" name="email" placeholder="Email Address" pattern="^.*@.*\..*$" value="<?=$userSettings['mail']?>" disabled>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="username" class="col-md-3 control-label">Username</label>
 						<div class="col-md-9">
-							<input type="text" class="form-control" name="username" placeholder="Username" disabled>
+							<input type="text" class="form-control" name="username" placeholder="Username" value="<?=$userSettings['username']?>" disabled>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="password" class="col-md-3 control-label">Password</label>
 						<div class="col-md-9">
-							<input type="password" class="form-control" name="password" placeholder="Password" required>
+							<input type="password" class="form-control" name="password" placeholder="Edit if you want to change your current password">
 						</div>
 					</div>
 						
 					<div class="form-group">
 						<label for="birth" class="col-md-3 control-label">Birth Date</label>
 						<div class="col-md-9">
-							<input type="date" class="form-control" name="birth" required>
+							<input type="date" class="form-control" name="birth" value="<?=$userSettings['birthDate']?>" required>
 						</div>
 					</div>
 					
