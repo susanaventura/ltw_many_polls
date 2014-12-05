@@ -9,7 +9,7 @@
 	 
 
 	
-	if (isset($_POST['user']) && 
+	if (isset($_POST['user']) && isset($_POST['poll']) && 
 		(	$_POST['user'] == 'anonymous' || 
 			(	isset($_SESSION['username']) && 
 				$_SESSION['username'] == $_POST['user'] &&
@@ -18,7 +18,7 @@
 			) 
 		)
 	){
-	
+		$user = $_POST['user'];
 		$poll = $_POST['poll'];
 		$answers = (array) json_decode($_POST['answers']);
 	

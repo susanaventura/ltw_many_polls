@@ -43,7 +43,7 @@ create table PossibleAnswer(
 );
 	
 create table UserAnswerPoll(
-	user varchar REFERENCES User(username),
+	user varchar REFERENCES User(username) ON DELETE CASCADE,
 	answer integer REFERENCES PossibleAnswer(id) ON DELETE CASCADE
 );
 

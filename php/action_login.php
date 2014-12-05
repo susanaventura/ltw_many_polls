@@ -9,13 +9,13 @@
 	
 	if (isset($_POST['username']) && 
 		isset($_POST['password']) &&
-		userExists($postUser) && 
-		correctPswUser($postUser, $postPsw)
+		userExists($_POST['username']) && 
+		correctPswUser($_POST['username'], $_POST['password'])
 		){ // test if user exists
 		
-		if (strpos($postUser, '@') !== false)
-			$user = getUsername($postUser);
-		else $user = $postUser;
+		if (strpos($_POST['username'], '@') !== false)
+			$user = getUsername($_POST['username']);
+		else $user = $_POST['username'];
 		
 		$_SESSION['username'] = $user;         // store the username
 		$_SESSION['csrf_token'] = generateRandomToken(); // generate a auth token
