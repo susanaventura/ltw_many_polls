@@ -35,3 +35,7 @@ padding-top: 50px !important;
 /*background: #e6ddcf;*/
 background: #ecf0f1;
 }
+
+.img-circle.img-center.img-responsive {
+	border: 7px solid #ecf0f1;
+}

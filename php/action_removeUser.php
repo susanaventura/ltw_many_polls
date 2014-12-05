@@ -5,12 +5,12 @@
 	  
 	include('../database/connection.php'); // connects to the database
 	include('../database/polls.php');      // loads the functions responsible for the users table
-	 
-	$postToken = $_POST['csrf_token'];
+	
 	
 	if (isset($_SESSION['username']) &&
 		isset($_SESSION['csrf_token']) &&
-		$_SESSION['csrf_token'] == $postToken
+		isset($_POST['csrf_token']) &&
+		$_SESSION['csrf_token'] == $_POST['csrf_token']
 		) {
 		
 		removeUser($_SESSION['username']);

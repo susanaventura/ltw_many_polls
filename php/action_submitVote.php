@@ -7,16 +7,17 @@
 	include('../database/polls.php');      // loads the functions responsible for the users table
 	include('../php/templates/tokenHandling.php');
 	 
-	$user = $_POST['user'];
+
 	
-	if ($user == 'anonymous' || 
+	if (isset($_POST['user']) && 
+		(	$_POST['user'] == 'anonymous' || 
 			(	isset($_SESSION['username']) && 
-				$_SESSION['username'] == $user &&
+				$_SESSION['username'] == $_POST['user'] &&
 				isset($_POST['csrf_token']) &&
 				verifyCSRFToken($_POST['csrf_token'])
 			) 
 		)
-		{
+	){
 	
 		$poll = $_POST['poll'];
 		$answers = (array) json_decode($_POST['answers']);
