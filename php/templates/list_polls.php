@@ -28,7 +28,9 @@
 				<!-- Admin -->
 				<div class="row col-lg-12 text-center">
 				<? if(!$userAnsweredPoll){ ?>
+					<a href="../php/pollXPage.php?id=<?=$row['id']?>">
 						<img src="../images/canVote_icon.png" />
+					</a>
 				<? } ?>
 				<? if($row['owner'] === $user){ ?>
 					<a href="" onClick="removePoll(<?=$row['id']?>); return false;">

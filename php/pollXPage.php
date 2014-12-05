@@ -1,5 +1,5 @@
 <?php
-	session_start(); 
+	include_once("templates/secureSessionStart.php");
 
 	/* include das databases*/
 	include('../database/connection.php');
@@ -8,6 +8,7 @@
 	if (isset($_GET['id']))
 		$poll = getPoll($_GET['id']);
 	else die();
+	if ($poll == false) die();
 	
 	if(!isset($_SESSION['username'])) $user = 'anonymous'; else $user = $_SESSION['username'];
 	if(!isset($_SESSION['csrf_token'])) $token = ''; else $token = $_SESSION['csrf_token'];

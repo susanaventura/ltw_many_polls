@@ -1,12 +1,12 @@
 <?php
-	session_start(); 
+	include_once("templates/secureSessionStart.php"); 
 	
 	/* include das databases*/
 	include('../database/connection.php');
 	include('../database/users.php');
 	
-	$user = $_GET['user'];
-	
+	if (!isset($_SESSION['username'])) die();
+	$user = $_SESSION['username'];
 	$userSettings = getUser($user);
 	
 	if(!$userSettings) die();

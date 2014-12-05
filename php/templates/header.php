@@ -147,7 +147,7 @@
 								<a href="../php/pollsListPage.php?searchText=PollsIcanAnswer">Polls I can answer</a>
 							</li>
 							<li>
-								<a href="../php/accountSettingsPage.php?user=<?=$_SESSION['username']?>">My account settings</a>
+								<a href="../php/accountSettingsPage.php?">My account settings</a>
 							</li>
 						</ul>
 					</li>

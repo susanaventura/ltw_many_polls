@@ -1,6 +1,6 @@
 
 <?php
-	session_start(); 
+	include_once("templates/secureSessionStart.php");
 
 	/* include das databases*/
 	if(!isset($_SESSION['username'])) $user = 'anonymous'; else $user = $_SESSION['username'];

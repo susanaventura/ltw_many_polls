@@ -1,5 +1,5 @@
 <?php
-session_start();
+include_once("templates/secureSessionStart.php");
 
 $session = session_destroy();
 
