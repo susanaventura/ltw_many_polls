@@ -159,7 +159,7 @@ function validateSubmitVote(username, token, pollId, questionId){
 		});
 		
 		$.ajax({
-			type: "GET",
+			type: "POST",
 			url: "../php/action_submitVote.php",
 			data: {	user : username,
 					poll : pollId,
@@ -174,11 +174,14 @@ function validateSubmitVote(username, token, pollId, questionId){
 							$(this).parent('.wrapperChoice').addClass('withBorder');
 						$(this).attr("disabled", true);
 					});
+					$("#voteButton").attr('disabled','disabled');
 					showResults(questionId);
 					//document.getElementById('resultsBtn').show();
 					return true;
+				} else  {
+					alert("Invalid credentials"); 
+					return true;
 				}
-				else  {alert("invalid credentials"); return true;}
 			},
 			error: function(res, status) {
 				console.log(res);

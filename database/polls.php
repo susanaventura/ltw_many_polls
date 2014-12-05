@@ -13,7 +13,7 @@ function getAllPublicPolls() {
 	
 	try {
 
-		 $stmt = $db->prepare('SELECT id, title, owner, image, isPrivate FROM Poll WHERE isPrivate = 0');
+		 $stmt = $db->prepare('SELECT id, title, owner, image, isPrivate FROM Poll WHERE isPrivate = 0 ORDER BY id DESC');
 
 		 //var_dump($stmt);
 		 $stmt->execute();   
@@ -35,7 +35,7 @@ function getUserPolls($user) {
 	
 	try {
 
-		 $stmt = $db->prepare('SELECT id, title, owner, image, isPrivate FROM Poll WHERE owner = ?');
+		 $stmt = $db->prepare('SELECT id, title, owner, image, isPrivate FROM Poll WHERE owner = ? ORDER BY id DESC');
 
 		 //var_dump($stmt);
 		 $stmt->execute(array($user));   
@@ -58,7 +58,7 @@ function getPollsByKeys($text) {
 	 $string = "%".$text."%";
 	 try {
 	  
-	   $stmt = $db->prepare('SELECT DISTINCT id, title, owner, image, isPrivate FROM Poll WHERE id in (select poll FROM Question WHERE question LIKE :text) OR title LIKE :text');
+	   $stmt = $db->prepare('SELECT DISTINCT id, title, owner, image, isPrivate FROM Poll WHERE id in (select poll FROM Question WHERE question LIKE :text) OR title LIKE :text ORDER BY id DESC');
 
 
 	   $stmt->bindParam(':text', $string);
@@ -89,7 +89,8 @@ function getPollsUserHasAnswered($user) {
 					UserAnswerPoll.answer = PossibleAnswer.id AND
 					PossibleAnswer.question = Question.id AND
 					UserAnswerPoll.user = ?
-				)					
+				)
+			ORDER BY id DESC
 		');
 		
 		 $stmt->execute(array($user));   
@@ -119,7 +120,8 @@ function getPollsUserCanAnswer($user){
 					UserAnswerPoll.answer = PossibleAnswer.id AND
 					PossibleAnswer.question = Question.id AND
 					UserAnswerPoll.user = ?
-				)					
+				)
+			ORDER BY id DESC
 		');
 		
 		 $stmt->execute(array($user));   
