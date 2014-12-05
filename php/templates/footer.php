@@ -11,13 +11,13 @@
             <!-- /.row -->
         </footer>
 
-    </div>
+    <!--</div>-->
             <!-- /.container-fluid -->
 
-        </div>
+        <!--</div>-->
         <!-- /#page-wrapper -->
 
-    </div>
+    <!--</div>-->
     <!-- /#wrapper -->
 
     <!-- jQuery -->
